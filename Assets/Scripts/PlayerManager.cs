@@ -10,8 +10,8 @@ public class PlayerManager : MonoBehaviour
     //player transformu
     public Transform player;
 
-    //stickman sayýsý(serializeField kaldýrýlacak)
-    [SerializeField] private int numberOfStickmans;
+    //stickman sayýsý
+    private int numberOfStickmans;
 
     //karakter sayýsýný tutar. ek bilgi: player objesinin alt objesindeki textte tutar.
     [SerializeField] private TextMeshPro CounterTxt;
@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     //*************************
     [Range(0f, 2f)]
     [SerializeField] float distanceFactor, radius;
-   
+
 
     private void Start()
     {

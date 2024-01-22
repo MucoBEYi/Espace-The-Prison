@@ -587,7 +587,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -713,18 +712,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &330585548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b524a50775976de43af0e39978a8d037, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,10 +1132,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1244640112}
   - component: {fileID: 1244640111}
-  - component: {fileID: 1244640115}
-  - component: {fileID: 1244640113}
   - component: {fileID: 1244640114}
-  - component: {fileID: 1244640116}
+  - component: {fileID: 1244640113}
+  - component: {fileID: 1244640115}
   m_Layer: 0
   m_Name: Player
   m_TagString: player
@@ -1207,7 +1193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  numberOfStickmans: 0
   CounterTxt: {fileID: 2009641968}
   stickMan: {fileID: 2464238508434606353, guid: 9e1443db794b90140ab51de67a4c8237,
     type: 3}
@@ -1247,26 +1232,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244640110}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6362f3b9f43a28c419f8e8346630df02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xSpeed: 4
-  zSpeed: 1
-  x: 0
---- !u!114 &1244640116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244640110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b524a50775976de43af0e39978a8d037, type: 3}
+  m_Script: {fileID: 11500000, guid: e2041f24fd92e4c409006bdd4db21e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  xSpeed: 5
+  zSpeed: 1
+  xBorder: 3
 --- !u!1 &1292368329
 GameObject:
   m_ObjectHideFlags: 0
