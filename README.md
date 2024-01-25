@@ -6,7 +6,7 @@ hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı ka
 
 gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla karakter oluşturuyor.
 
-karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor(eğer hızlandırma işlemi yapılamazsa IEnumerator den void metoduna dönüştürülmeli).
+karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor(eğer hızlandırma işlemi yapılamazsa IEnumerator den void metoduna dönüştürülmeli).  (VOID METODUNA ÇEVİRİLDİ)
 
 karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi gerek.    (DÜZELTİLDİ, KOD SATIRI PLAYERMANAGER SCRİPTİNE TAŞINDI)
 
