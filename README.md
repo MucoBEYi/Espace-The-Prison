@@ -1,6 +1,6 @@
 BİLİNEN SORUNLAR:
 
-karakter öldüğünde yazının üstündeki text güncellenmiyor.
+karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor.
 
 hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı kaldırılmalı).
 
