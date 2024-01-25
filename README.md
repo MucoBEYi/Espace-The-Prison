@@ -1,4 +1,4 @@
-BİLİNEN SORUNLAR:
+BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor.
 
@@ -12,6 +12,7 @@ karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi
 
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
+animasyonlar neredeyse hiç başlanmamış halde
 
 ZOR KISIM:
 karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(bunu yapabilecek kapasitede bir babayiğit varsa ellerinden öper xd). 
