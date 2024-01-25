@@ -2,6 +2,8 @@ BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor.
 
+karakterler textden uzaklaşıyor(bu biraz zorlayabilir)
+
 hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı kaldırılmalı).
 
 gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla karakter oluşturuyor.
