@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,27 +7,40 @@ using UnityEngine.UI;
 
 public class MotionController : MonoBehaviour
 {
-    #region ray sistemi için gereken deðiþkenler
-    //private yapýlacak
-    [SerializeField] Camera cam;
+    private GameManager gameManager;
 
-    float _touchPos;
+    private BattleManager battleManager;
+
+    #region ray sistemi için gereken deðiþkenler
+    private Camera cam;
+
+    private float _touchPos;
 
     //týklama kontrolü
-    bool TouchControl;
+    private bool TouchControl;
     #endregion
 
     #region hareket hýz deðiþkenleri
-    [SerializeField] float xSpeed, zSpeed;
+    [SerializeField] float xSpeed, roadSpeed;
+
+    //yolun transformu
+    [SerializeField] Transform roads;
     #endregion
 
     #region saða sola kaydýrma sýnýrý deðiþkeni
-    [SerializeField] float xBorder = 3;
+    private float xBorder = 3;
     #endregion
+
+
     private void Start()
     {
         //ya böyle tanýmlama þekli mi olur #@=!%
         cam = Camera.main;
+
+        gameManager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<GameManager>();
+
+        battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
+
     }
 
     void Update()
@@ -36,13 +50,22 @@ public class MotionController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
+        //eðer oyun aktif deðilse diðer komutlara girmez.
+        if (!gameManager.gameState)
+        {
+            //olasý hatayý önlemek baÐbýnda
+            battleManager.attackState = false;
+
+            return;
+        }
+        StartCoroutine(Movement());
     }
 
     #region Motion(hareket) iþlemlemleri
     //kaydýrma
     void Swipe()
     {
+
         if (Input.touchCount > 0)
         {
             Touch _touch = Input.GetTouch(0);
@@ -76,14 +99,38 @@ public class MotionController : MonoBehaviour
                 _touchPos = _ray.GetPoint(distance).x;      // "Çarpma noktasýný al ve x koordinatýný al"  chat gpt açýklamasý, hiç bir þey anlamadým.
             }
         }
-    }
-    //hareket komutu
-    void Movement()
-    {
-        //saða ve sola geçiþ sýnýrý
-        _touchPos = Mathf.Clamp(_touchPos, -xBorder, xBorder);
 
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime * xSpeed), 0.5f, transform.position.z + zSpeed * Time.fixedDeltaTime);
+    }
+    //hareket komutu        EK BÝLGÝ: KARAKTER ÝLERÝ GÝTMEYECEK YOL GERÝ GELECEK
+    IEnumerator Movement()
+    {
+        //savaþ baþlarsa
+        if (battleManager.attackState)
+        {
+            roads.position = new(roads.position.x, roads.position.y, roads.position.z + 0 * Time.fixedDeltaTime);
+            yield return new WaitForSeconds(0.25f);
+
+            //******************** DEÐÝÞMESÝ GEREKEBÝLÝR DÜÞMANLAR HAREKET ETTÝÐÝNDE TEST EDÝLMESÝ GEREKÝYOR!!!!!!!!!!!!!!!
+            roads.position = new(roads.position.x, roads.position.y, roads.position.z - 1.5f * Time.fixedDeltaTime);
+
+
+        }
+        //yol ve alt objeleri geriye doðru olmasý gereken hýzda hareket edecektir
+        else
+        {
+            roads.position = new(roads.position.x, roads.position.y, roads.position.z + -roadSpeed * Time.fixedDeltaTime);
+
+            #region saða ve sola geçiþ sýnýrý
+            //ÖNEMLÝ: eðer bu scriptin objesini deðiþtirmek gerekiyorsa transform.childcount deðiþtirilmesi gerekebilir.
+            if (transform.childCount < 50)
+                _touchPos = Mathf.Clamp(_touchPos, -xBorder, xBorder);
+            else
+                _touchPos = Mathf.Clamp(_touchPos, -2, 2);
+            #endregion
+
+            //player saða sola kaydýrma
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime * xSpeed), 0.4445743f, transform.position.z);
+        }
     }
     #endregion
 }

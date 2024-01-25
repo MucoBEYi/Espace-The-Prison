@@ -16,20 +16,25 @@ public class GateManager : MonoBehaviour
 
     private void Start()
     {
-        if(multiply)
+        GateNumber();
+    }
+
+    void GateNumber()
+    {
+        if (multiply)
         {
             randomNumber = Random.Range(1, 3);
             GateNo.text = "X " + randomNumber.ToString();
         }
         else
         {
-            randomNumber = Random.Range(10, 100);
-            print(randomNumber);
-          /*  if(randomNumber %2  == 0)
-            {
-                randomNumber += 1;
-                print("yüzdeliğin içinde " + randomNumber);
-            }*/
+            randomNumber = Random.Range(100, 101);
+
+            /*  if(randomNumber %2  == 0)
+              {
+                  randomNumber += 1;
+                  print("yüzdeliğin içinde " + randomNumber);
+              }*/
 
             GateNo.text = "+ " + randomNumber.ToString();
         }

@@ -6,6 +6,12 @@ TagManager:
   tags:
   - player
   - gate
+  - gameManager
+  - playerDetected
+  - blue
+  - red
+  - battleManager
+  - enemyManager
   layers:
   - Default
   - TransparentFX
