@@ -1,4 +1,5 @@
 BİLİNEN SORUNLAR:
+
 karakter öldüğünde yazının üstündeki text güncellenmiyor.
 
 hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı kaldırılmalı).
