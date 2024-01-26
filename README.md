@@ -16,5 +16,13 @@ oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
 animasyonlar neredeyse hiç başlanmamış halde
 
+
+oyunu düşmanlar kazandığında:
+düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager scriptinde yapılmalı).
+
+
+
+
+
 ZOR KISIM:
 karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(bunu yapabilecek kapasitede bir babayiğit varsa ellerinden öper xd). 
