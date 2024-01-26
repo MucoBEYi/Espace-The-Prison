@@ -1,6 +1,16 @@
-BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
+DÜZELDİ(UMARIM):
 
-karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (GÜNCELLENİYOR/DÜŞMAN HALLEDİLDİ)
+
+DÜZENLENME AŞAMASINDA:
+
+karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (SADECE SON ASKERİ YETİŞTİREMİYOR, MÜCAHİT DÜZELTECEK)
+
+karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor (MÜCAHİT DÜZELTTİ)
+
+karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi gerek.    (MÜCAHİT DÜZELTTİ, KOD SATIRI PLAYERMANAGER SCRİPTİNE TAŞINDI)
+
+
+BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 karakterler textden uzaklaşıyor(bu biraz zorlayabilir)
 
@@ -8,19 +18,12 @@ hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı ka
 
 gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla karakter oluşturuyor.
 
-karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor(eğer hızlandırma işlemi yapılamazsa IEnumerator den void metoduna dönüştürülmeli).  (VOID METODUNA ÇEVİRİLDİ)
-
-karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi gerek.    (DÜZELTİLDİ, KOD SATIRI PLAYERMANAGER SCRİPTİNE TAŞINDI)
-
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
 animasyonlar neredeyse hiç başlanmamış halde
 
-
 oyunu düşmanlar kazandığında:
 düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager scriptinde yapılmalı).
-
-
 
 
 
