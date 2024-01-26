@@ -1,6 +1,6 @@
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
-karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor.
+karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (GÜNCELLENİYOR/DÜŞMAN HALLEDİLDİ)
 
 karakterler textden uzaklaşıyor(bu biraz zorlayabilir)
 
