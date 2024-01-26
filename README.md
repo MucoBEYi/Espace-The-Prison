@@ -8,7 +8,7 @@ karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (MÜC
 
 DÜZENLENME AŞAMASINDA:
 
-
+-
 
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
@@ -21,7 +21,9 @@ gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla kar
 
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
-animasyonlar neredeyse hiç başlanmamış halde
+düşman koşma animasyonu çalışana kadar ölüyorlar.
+
+
 
 oyunu düşmanlar kazandığında:
 düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager scriptinde yapılmalı).
