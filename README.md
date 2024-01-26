@@ -4,10 +4,11 @@ karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor (MÜCAHİT DÜ
 
 karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi gerek.    (MÜCAHİT DÜZELTTİ, KOD SATIRI PLAYERMANAGER SCRİPTİNE TAŞINDI)
 
+karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (MÜCAHİT DÜZELTTİ)
 
 DÜZENLENME AŞAMASINDA:
 
-karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (SADECE SON ASKERİ YETİŞTİREMİYOR, MÜCAHİT DÜZELTECEK)
+
 
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
