@@ -21,7 +21,7 @@ gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla kar
 
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
-düşman koşma animasyonu çalışana kadar ölüyorlar.
+düşmanlar koşma animasyonu çalışana kadar ölüyor.
 
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor.
 
