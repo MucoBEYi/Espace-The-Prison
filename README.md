@@ -23,6 +23,8 @@ oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
 düşman koşma animasyonu çalışana kadar ölüyorlar.
 
+ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor.
+
 
 
 oyunu düşmanlar kazandığında:
@@ -31,4 +33,5 @@ düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager s
 
 
 ZOR KISIM:
-karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(bunu yapabilecek kapasitede bir babayiğit varsa ellerinden öper xd). 
+karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(bunu yapabilecek kapasitede bir babayiğit varsa ellerinden öper xd).
+
