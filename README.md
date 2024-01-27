@@ -25,7 +25,7 @@ düşmanlar koşma animasyonu çalışana kadar ölüyor.
 
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor.
 
-
+Ses eklenecek
 
 oyunu düşmanlar kazandığında:
 düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager scriptinde yapılmalı).
