@@ -12,6 +12,7 @@ TagManager:
   - red
   - battleManager
   - enemyManager
+  - finish
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] TextMeshPro CounterTxt;
     [SerializeField] GameObject enemyPrefabs;
+    private float numberOfEnemyStickman;
     #endregion
 
     #region düþmanlarýn hizasý için gereken deðiþkenler
@@ -35,8 +36,8 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
         battleManager.EnemyOffence(player, transform);
-
         LookPlayer();
+        EnemyAnimation(transform);
     }
 
     #region kopyalanan düþman hizasý
@@ -79,34 +80,30 @@ public class EnemyManager : MonoBehaviour
             Instantiate(enemyPrefabs, transform.position, new Quaternion(0, 180, 0, 1), transform);
         }
 
-        CounterTxt.text = (transform.childCount).ToString();            //adam dengesiz transform.childcount - 1 yapýyor ama countertxt yi bu scriptin alt objesi yapmýyor, benden daha kötü matematiði var ama cos sin biliyor. rez alýn tekrar alt objesi yapacak, baþka þansý yok, çünkü text adamlarý takip etmiyor.
+        TextUpdate();
     }
     #endregion
-
 
     #region düþmanlar için animasyon 
     private void EnemyAnimation(Transform enemy)
     {
-        if (gameManager.gameState)
+        if (gameManager.gameState && battleManager.attackState)
             for (int i = 1; i < enemy.childCount; i++)
                 enemy.GetChild(i).GetComponent<Animator>().SetBool("runner", true);                 //getcomponentden daha iyi çözüm?
 
 
-        //oyun durursa
-        else if (!gameManager.gameState)
+        //oyun durursa veya savaþ biterse 
+        else if (!gameManager.gameState || !battleManager.attackState)
             for (int i = 1; i < enemy.childCount; i++)
                 enemy.GetChild(i).GetComponent<Animator>().SetBool("runner", false);
     }
     #endregion
 
-
-
-    private void OnTriggerEnter(Collider other)
+    #region düþmanlarýn sayýsýný gösteren text güncellemesi
+    public void TextUpdate()
     {
-        //telefonu yormamasý için updateye atmadým taþýdým
-        if (other.CompareTag("blue"))
-            EnemyAnimation(transform);
-
+        CounterTxt.text = transform.childCount.ToString();
     }
+    #endregion
 
 }

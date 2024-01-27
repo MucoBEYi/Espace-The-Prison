@@ -12,7 +12,7 @@ public class BattleManager : MonoBehaviour
     #endregion
 
 
-    #region karakterler düþmanlarý takip eder eðer düþman kalmadýysa atak durumu false olur
+    #region karakterler düþmanlarý takip eder ve eðer düþman kalmadýysa yapýlacak iþlemler
     public void PlayerOffence(Transform enemy, Transform _Player)
     {
         //savaþ yoksa diðer komutlarý çalýþtýrmaz
@@ -35,9 +35,9 @@ public class BattleManager : MonoBehaviour
         else
         {
             attackState = false;
-            playerManager.Alignment();
             enemy.gameObject.SetActive(false);
             playerManager.FormatStickMan();
+
 
         }
     }
@@ -61,8 +61,13 @@ public class BattleManager : MonoBehaviour
             }
 
         //oyun kaybedildiðinde çalýþacak kodlar
-        else if(enemy.transform.childCount > 1 )
+        else if (enemy.transform.childCount > 1)
         {
+            attackState = false;
+
+            GameManager gameManager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<GameManager>();
+            gameManager.gameState = false;
+            playerManager.TextUpdate();
             print("düþman kazandý");
         }
     }
@@ -70,10 +75,9 @@ public class BattleManager : MonoBehaviour
     #endregion
 
     #region DÝE DÝE DÝE DÝE DÝE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void KillTheALL(GameObject red, GameObject blue)
+    public void KillTheALL(GameObject target)
     {
-        Destroy(red.gameObject);
-        Destroy(blue.gameObject);
+        Destroy(target.gameObject);
     }
     #endregion
 }

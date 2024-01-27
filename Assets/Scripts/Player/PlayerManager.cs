@@ -41,6 +41,10 @@ public class PlayerManager : MonoBehaviour
         CounterTxt.text = numberOfStickmans.ToString();
         #endregion
 
+        //oyun baþladýðýnda 1 tane karakter oluþturur
+        Instantiate(stickMan, transform.position, Quaternion.identity, transform);
+        FormatStickMan();
+
     }
 
     private void Update()
@@ -52,6 +56,7 @@ public class PlayerManager : MonoBehaviour
         battleManager.PlayerOffence(enemy, transform);
         LookEnemy();
         #endregion
+
     }
 
     #region düþmana doðru pozisyon alma iþlemi
@@ -92,13 +97,16 @@ public class PlayerManager : MonoBehaviour
 
             var _NewPos = new Vector3(x, -0.4445743f, z);
 
-            
             transform.GetChild(i).DOLocalMove(_NewPos, 1.5f).SetEase(Ease.OutBack);
+
         }
+        transform.GetChild(0).position = new Vector3(transform.position.x, transform.GetChild(0).position.y, transform.position.z);
+        TextUpdate();
+        Alignment();
     }
     #endregion
 
-    #region savaþ sonrasý karakterlerin rotasyon sýfýrlanmasý
+    #region karakterlerin rotasyon sýfýrlanmasý
     public void Alignment()
     {
         for (int i = 1; i < transform.childCount; i++)
@@ -121,7 +129,8 @@ public class PlayerManager : MonoBehaviour
         }
         numberOfStickmans = transform.childCount - 1;
 
-        CounterTxt.text = numberOfStickmans.ToString();
+
+        TextUpdate();
 
         //stickmanlarýn pozisyonu
         FormatStickMan();
@@ -162,6 +171,16 @@ public class PlayerManager : MonoBehaviour
         }
     }
     #endregion
+
+
+    #region karakterlerin sayýsýný gösteren text güncellemesi
+    public void TextUpdate()
+    {
+        CounterTxt.text = (transform.childCount - 1).ToString();
+    }
+    #endregion
+
+
 
 }
 

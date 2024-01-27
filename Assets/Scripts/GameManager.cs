@@ -15,6 +15,13 @@ public class GameManager : MonoBehaviour
     {
         gameState = true;
     }
+
+
+    //oyun bittiðinde çalýþacak komutlar
+  /*  void GameDone(GameObject finish)
+    {
+        if(finish )
+    }*/
 }
 
 
