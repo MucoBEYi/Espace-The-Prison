@@ -1,6 +1,17 @@
-BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
+DÜZELDİ(UMARIM):
 
-karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor.
+karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor (MÜCAHİT DÜZELTTİ)
+
+karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi gerek.    (MÜCAHİT DÜZELTTİ, KOD SATIRI PLAYERMANAGER SCRİPTİNE TAŞINDI)
+
+karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (MÜCAHİT DÜZELTTİ)
+
+DÜZENLENME AŞAMASINDA:
+
+-
+
+
+BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 karakterler textden uzaklaşıyor(bu biraz zorlayabilir)
 
@@ -8,13 +19,19 @@ hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı ka
 
 gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla karakter oluşturuyor.
 
-karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor(eğer hızlandırma işlemi yapılamazsa IEnumerator den void metoduna dönüştürülmeli).  (VOID METODUNA ÇEVİRİLDİ)
-
-karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi gerek.    (DÜZELTİLDİ, KOD SATIRI PLAYERMANAGER SCRİPTİNE TAŞINDI)
-
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta.
 
-animasyonlar neredeyse hiç başlanmamış halde
+düşmanlar koşma animasyonu çalışana kadar ölüyor.
+
+ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor.
+
+Ses eklenecek
+
+oyunu düşmanlar kazandığında:
+düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager scriptinde yapılmalı).
+
+
 
 ZOR KISIM:
-karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(bunu yapabilecek kapasitede bir babayiğit varsa ellerinden öper xd). 
+karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(bunu yapabilecek kapasitede bir babayiğit varsa ellerinden öper xd).
+
