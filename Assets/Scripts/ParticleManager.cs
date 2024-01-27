@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
+    //start ile Ienumerator kullanýmýný hoca beðenmedi, deðiþtirilecek
     IEnumerator Start()
     {
         yield return new WaitForSecondsRealtime(2);

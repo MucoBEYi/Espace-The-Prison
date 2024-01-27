@@ -19,11 +19,11 @@ public class PCharManager : MonoBehaviour
     }
 
     #region çarpýþtýðýnda hem karakterimiz hem düþman ölür
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("red") && battleManager.attackState && other.transform.parent.childCount > 0)
+        if (collision.collider.CompareTag("red") && battleManager.attackState && collision.transform.parent.childCount > 0)
         {
-            battleManager.KillTheALL(other.gameObject);
+            StartCoroutine(battleManager.KillTheALL(collision.gameObject));
 
             Instantiate(blueParticle, transform.position, Quaternion.identity);
 

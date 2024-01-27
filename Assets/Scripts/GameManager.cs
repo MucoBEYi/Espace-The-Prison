@@ -18,10 +18,13 @@ public class GameManager : MonoBehaviour
 
 
     //oyun bittiðinde çalýþacak komutlar
-  /*  void GameDone(GameObject finish)
+    public void GameWin()
     {
-        if(finish )
-    }*/
+        gameState = false;
+        print("oyunu KAZANDIN");
+
+    }
+
 }
 
 

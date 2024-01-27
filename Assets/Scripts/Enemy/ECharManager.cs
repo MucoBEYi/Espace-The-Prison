@@ -18,13 +18,18 @@ public class ECharManager : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter(Collider other)
+    #region düþmanlar karakterlerimizi öldürür
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("blue") && battleManager.attackState && other.transform.parent.childCount > 0)
+        if (collision.collider.CompareTag("blue") && battleManager.attackState && collision.transform.parent.childCount > 1)
         {
             enemyManager.TextUpdate();
-            battleManager.KillTheALL(other.gameObject);
+            StartCoroutine(battleManager.KillTheALL(collision.gameObject));
+
+
+            //particle üretir
             Instantiate(redParticle, transform.position, Quaternion.identity);
         }
     }
+    #endregion
 }

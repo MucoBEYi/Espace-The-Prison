@@ -63,11 +63,10 @@ public class BattleManager : MonoBehaviour
         //oyun kaybedildiðinde çalýþacak kodlar
         else if (enemy.transform.childCount > 1)
         {
-            attackState = false;
-
             GameManager gameManager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<GameManager>();
             gameManager.gameState = false;
-            playerManager.TextUpdate();
+            attackState = false;
+            player.GetChild(0).gameObject.SetActive(false);
             print("düþman kazandý");
         }
     }
@@ -75,9 +74,12 @@ public class BattleManager : MonoBehaviour
     #endregion
 
     #region DÝE DÝE DÝE DÝE DÝE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void KillTheALL(GameObject target)
+    public IEnumerator KillTheALL(GameObject target)
     {
+        yield return new WaitForSecondsRealtime(0.1f);
         Destroy(target.gameObject);
+        playerManager.stickmanList.Remove(target);
+
     }
     #endregion
 }

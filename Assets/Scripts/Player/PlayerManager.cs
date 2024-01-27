@@ -5,24 +5,33 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using Unity.Mathematics;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] BattleManager battleManager;
+    #region çaðýrdýðým classlar
+    [Serializable]
+    private class GetClass
+    {
+        public BattleManager battleManager;
 
-    [SerializeField] PlayerAnimator playerAnimator;
+        public AnimatorManager animatorManager;
+
+        public GameManager gameManager;
+    }
+
+    [SerializeField] GetClass getClass;
+    #endregion
 
     #region geçit için gereken deðiþkenler
-
-    //stickman sayýsý
-    private int numberOfStickmans;
-
-    //karakter sayýsýný tutar. ek bilgi: player objesinin alt objesindeki textte tutar.
-    [SerializeField] private TextMeshPro CounterTxt;
-
     //kopyalanacak obje
     [SerializeField] private GameObject stickMan;
 
+    //stickman sayýsýný tutan liste
+    public List<GameObject> stickmanList;
+
+    //karakter sayýsýný tutar. ek bilgi: player objesinin alt objesindeki textte tutar.
+    [SerializeField] private TextMeshPro CounterTxt;
     #endregion
 
     #region karakterlerin pozisyonlarý için gereken deðiþkenler
@@ -35,25 +44,26 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        #region geçitle alakalý ve baþlangýç karakteri oluþturma
+        //oyun baþladýðýnda 1 tane karakter oluþturur ve text açýlýr
+        GameObject firstChar = Instantiate(stickMan, new Vector3(transform.position.x, transform.position.y - 0.4445743f, transform.position.z), Quaternion.identity, transform);
+        stickmanList.Add(firstChar);
 
-        #region geçitle alakalý
-        numberOfStickmans = transform.childCount - 1;       // 1 sayý eksiltmenin sebebi 'Count_Label' objesini görmezden gelmesi için(sanýrým)
-        CounterTxt.text = numberOfStickmans.ToString();
+        TextUpdate();
         #endregion
 
-        //oyun baþladýðýnda 1 tane karakter oluþturur
-        Instantiate(stickMan, transform.position, Quaternion.identity, transform);
-        FormatStickMan();
+        //text aktif oluyor(hiyeraþide kapattým)
+        transform.GetChild(0).gameObject.SetActive(true);
 
     }
 
     private void Update()
     {
         //bu kod satýrý burada geçicidir. OnTriggerEnter e taþýnabilir(yada ucuza kaçýp burada býrakýrým :P)
-        playerAnimator.PlayerAnimation(transform);
+        getClass.animatorManager.PlayerAnimation(transform);
 
         #region player savaþ baþladýysa: düþmaný takip eder, düþman bittiyse atak durumu false döner. düþmana doðru rotasyonunu çevirir.
-        battleManager.PlayerOffence(enemy, transform);
+        getClass. battleManager.PlayerOffence(enemy, transform);
         LookEnemy();
         #endregion
 
@@ -65,7 +75,7 @@ public class PlayerManager : MonoBehaviour
     void LookEnemy()
     {
         //savaþ baþlamadýysa diðer komutlara girmez
-        if (!battleManager.attackState)
+        if (!getClass.battleManager.attackState)
             return;
 
         //DÜZELTÝLDÝ AMA B DA ÇIKABÝLÝR
@@ -88,7 +98,7 @@ public class PlayerManager : MonoBehaviour
     //kopyalanan stickmanlarýn pozisyonu
     public void FormatStickMan()
     {
-        for (int i = 1; i < transform.childCount; i++)
+        for (int i = 1; i < stickmanList.Count + 1; i++)
         {
             //UFUFU WEWEWE ONYETEN WEWEWE UGÝMÝMÝ OSAS
             var x = distanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * radius);
@@ -100,7 +110,9 @@ public class PlayerManager : MonoBehaviour
             transform.GetChild(i).DOLocalMove(_NewPos, 1.5f).SetEase(Ease.OutBack);
 
         }
+        //text saða sola uçup kaçýyor onu önlemek baÐbýnda
         transform.GetChild(0).position = new Vector3(transform.position.x, transform.GetChild(0).position.y, transform.position.z);
+
         TextUpdate();
         Alignment();
     }
@@ -117,32 +129,19 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-
-    #region stickman kopyalama iþlemleri
-    //stickman kopyalama
-    private void MakeStickMan(int number)
+    #region karakterlerin sayýsýný gösteren text güncellemesi
+    public void TextUpdate()
     {
-        //int 1 den baþlamayýnca yanlýþ sonuç çýkýyor aw
-        for (int i = 1; i < number; i++)
-        {
-            Instantiate(stickMan, transform.position, Quaternion.identity, transform);
-        }
-        numberOfStickmans = transform.childCount - 1;
-
-
-        TextUpdate();
-
-        //stickmanlarýn pozisyonu
-        FormatStickMan();
-
-
+        CounterTxt.text = stickmanList.Count.ToString();
     }
+    #endregion
 
     private void OnTriggerEnter(Collider other)
     {
+        #region karakter kopyalama
         if (other.gameObject.CompareTag("gate"))
         {
-            //gate_l nin boxcolliderini kapatýr(bunu unutmazsam destroy olarak deðiþtireceðim)
+            //gate_l nin boxcolliderini kapatýr
             other.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled = false;
             //gate_r nin boxcolliderini kapatýr
             other.transform.parent.GetChild(1).GetComponent<BoxCollider>().enabled = false;
@@ -150,38 +149,29 @@ public class PlayerManager : MonoBehaviour
             //çarptýðý objenin scriptini "_gateManager" olarak miras almamýza olanak saðlar
             GateManager _gateManager = other.GetComponent<GateManager>();
 
-            if (_gateManager.multiply)
-            {
-                MakeStickMan(numberOfStickmans * _gateManager.randomNumber);
-            }
-            else
-            {
-                MakeStickMan(numberOfStickmans + _gateManager.randomNumber);
-            }
+            //geçitten geçince stickman kopyalanýr
+            _gateManager.MakeStickMan(stickMan, gameObject);
         }
         #endregion
 
         #region düþman gördüyse saldýrý moduna geçer
         if (other.CompareTag("playerDetected"))
         {
-            battleManager.attackState = true;
+            getClass.battleManager.attackState = true;
 
-            //düþmana bakmak için transformunu buradan alýyorum(muhtemelen daha yere yerleþtirilebilirdi bu kod).
+            //düþmana bakmak için ama bu deðiþtirilecek
             enemy = other.transform;
         }
+        #endregion
+
+        #region finishe ulaþtýðýnda
+        if (other.CompareTag("finish"))
+        {
+            getClass.gameManager.GameWin();
+        }
+
+        #endregion
     }
-    #endregion
-
-
-    #region karakterlerin sayýsýný gösteren text güncellemesi
-    public void TextUpdate()
-    {
-        CounterTxt.text = (transform.childCount - 1).ToString();
-    }
-    #endregion
-
-
-
 }
 
 

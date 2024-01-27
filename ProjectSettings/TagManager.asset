@@ -13,6 +13,8 @@ TagManager:
   - battleManager
   - enemyManager
   - finish
+  - obstacle
+  - animatorManager
   layers:
   - Default
   - TransparentFX
