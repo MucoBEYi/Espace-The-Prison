@@ -15,6 +15,8 @@ DÜZENLENME AŞAMASINDA:
 
 oyuncu karakterin ve düşman üstündeki text, savaş sonrası hatalı konumlanma (MÜCAHİT DÜZELTTİ, DÜŞMAN DÜZELTİLMESİ GEREKİYOR)
 
+UI düzenleniyor(A.Ş ilgileniyor).
+
 
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
@@ -32,6 +34,9 @@ Ses eklenecek(Onur Çiçek bu görev senindir)
 obstacleye çarpınca particleEfect çalışacak
 
 başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyunu başlatabiliyor(A.Ş bu görev senindir)
+
+FormatStickMan metodu çok fazla güç harcıyor
+
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor).
 
