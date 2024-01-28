@@ -1,4 +1,5 @@
 DÜZENLENME AŞAMASINDA:
+
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor(Level Dizayncıyı kim belirlediyseniz o başlasın şimdiden)
 yapman gereken tek şey: prefabs klasöründeki blue ve red particle objelerinin görünümünü daha güzel hale getirmek(yardım için devoloperleri etiketleyebilirsin)
 
