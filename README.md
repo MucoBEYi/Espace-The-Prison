@@ -35,6 +35,9 @@ obstacleye çarpınca particleEfect çalışacak
 
 başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyunu başlatabiliyor(A.Ş bu görev senindir)
 
+FormatStickMan metodu çok fazla güç harcıyor
+
+
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor).
 
 ZOR KISIM:
