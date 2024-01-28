@@ -15,6 +15,8 @@ DÜZENLENME AŞAMASINDA:
 
 oyuncu karakterin ve düşman üstündeki text, savaş sonrası hatalı konumlanma (MÜCAHİT DÜZELTTİ, DÜŞMAN DÜZELTİLMESİ GEREKİYOR)
 
+UI düzenleniyor(A.Ş ilgileniyor).
+
 
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
