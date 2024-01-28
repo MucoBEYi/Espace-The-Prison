@@ -60,15 +60,20 @@ public class BattleManager : MonoBehaviour
                     enemy.transform.GetChild(i).position = Vector3.Lerp(enemy.transform.GetChild(i).position, player.GetChild(1).position, Time.deltaTime * 2);
             }
 
-        //oyun kaybedildiðinde çalýþacak kodlar
+        #region oyun kaybedildiðinde çalýþacak kodlar
         else if (enemy.transform.childCount > 1)
         {
+            #region oyunu bitirir
             GameManager gameManager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<GameManager>();
             gameManager.gameState = false;
             attackState = false;
-            player.GetChild(0).gameObject.SetActive(false);
+            player.GetChild(0).gameObject.SetActive(false);    
+            gameManager.LoseMenu.SetActive(true);
+            #endregion
+
             print("düþman kazandý");
         }
+        #endregion
     }
 
     #endregion

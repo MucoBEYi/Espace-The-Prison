@@ -53,11 +53,9 @@ public class MotionController : MonoBehaviour
         //eðer oyun aktif deðilse diðer komutlara girmez.
         if (!gameManager.gameState)
         {
-            //olasý hatayý önlemek baÐbýnda
-            battleManager.attackState = false;
-
             return;
-        }
+        }   
+
         StartCoroutine(Movement());
     }
 

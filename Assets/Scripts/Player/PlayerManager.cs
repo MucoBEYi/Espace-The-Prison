@@ -44,26 +44,24 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        #region geçitle alakalý ve baþlangýç karakteri oluþturma
-        //oyun baþladýðýnda 1 tane karakter oluþturur ve text açýlýr
+        #region baþlangýç karakteri oluþturma, text güncelleme
         GameObject firstChar = Instantiate(stickMan, new Vector3(transform.position.x, transform.position.y - 0.4445743f, transform.position.z), Quaternion.identity, transform);
         stickmanList.Add(firstChar);
 
         TextUpdate();
-        #endregion
 
         //text aktif oluyor(hiyeraþide kapattým)
         transform.GetChild(0).gameObject.SetActive(true);
-
+        #endregion
     }
 
     private void Update()
     {
-        //bu kod satýrý burada geçicidir. OnTriggerEnter e taþýnabilir(yada ucuza kaçýp burada býrakýrým :P)
+        //bunun updateden kaldýrýp, daha az performans harcayacak bir yere taþýnmasý gerekiyor.
         getClass.animatorManager.PlayerAnimation(transform);
 
-        #region player savaþ baþladýysa: düþmaný takip eder, düþman bittiyse atak durumu false döner. düþmana doðru rotasyonunu çevirir.
-        getClass. battleManager.PlayerOffence(enemy, transform);
+        #region player savaþ baþladýysa: düþmaný takip eder, düþmana doðru rotasyonunu çevirir.
+        getClass.battleManager.PlayerOffence(enemy, transform);
         LookEnemy();
         #endregion
 
@@ -164,7 +162,7 @@ public class PlayerManager : MonoBehaviour
         }
         #endregion
 
-        #region finishe ulaþtýðýnda
+        #region finishe ulaþtýðýnda     yazacaðýmýz kodun fazlalýðýna göre bunun için ayrý script açabiliriz
         if (other.CompareTag("finish"))
         {
             getClass.gameManager.GameWin();
@@ -173,6 +171,3 @@ public class PlayerManager : MonoBehaviour
         #endregion
     }
 }
-
-
-//Transform = player kodunu çýkarttým hiç bir iþe yaramýyordu. gerekirse tekrar eklerim.

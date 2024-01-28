@@ -13,7 +13,6 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] TextMeshPro CounterTxt;
     [SerializeField] GameObject enemyPrefabs;
-    private float numberOfEnemyStickman;
     #endregion
 
     #region düþmanlarýn hizasý için gereken deðiþkenler
@@ -37,6 +36,8 @@ public class EnemyManager : MonoBehaviour
     {
         battleManager.EnemyOffence(player, transform);
         LookPlayer();
+
+        //bunun updateden kaldýrýp, daha az performans harcayacak bir yere taþýnmasý gerekiyor.
         EnemyAnimation(transform);
     }
 

@@ -39,6 +39,3 @@ public class AnimatorManager : MonoBehaviour
 
 
 }
-
-//her karakter oyun aktif olduðu sürece hareket etmelidir
-//player objesinin alt objeleri hareket edecektir.
