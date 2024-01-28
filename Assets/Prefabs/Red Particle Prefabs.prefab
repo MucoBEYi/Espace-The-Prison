@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 818143918827651423}
   - component: {fileID: 2187220382632525210}
   - component: {fileID: 6793296055268594923}
-  - component: {fileID: 6792096054739274719}
+  - component: {fileID: -372022571128625913}
   m_Layer: 0
   m_Name: Red Particle Prefabs
   m_TagString: Untagged
@@ -4898,7 +4898,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6792096054739274719
+--- !u!114 &-372022571128625913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

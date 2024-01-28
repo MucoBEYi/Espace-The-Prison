@@ -54,9 +54,9 @@ public class MotionController : MonoBehaviour
         if (!gameManager.gameState)
         {
             return;
-        }   
+        }
 
-        StartCoroutine(Movement());
+        Movement();
     }
 
     #region Motion(hareket) iþlemlemleri
@@ -100,20 +100,24 @@ public class MotionController : MonoBehaviour
 
     }
     //hareket komutu        EK BÝLGÝ: KARAKTER ÝLERÝ GÝTMEYECEK YOL GERÝ GELECEK
-    IEnumerator Movement()
+    void Movement()
     {
         //savaþ baþlarsa
         if (battleManager.attackState)
         {
             roads.position = new(roads.position.x, roads.position.y, roads.position.z + 0 * Time.fixedDeltaTime);
-            yield return new WaitForSeconds(0.25f);
 
-            //******************** DEÐÝÞMESÝ GEREKEBÝLÝR DÜÞMANLAR HAREKET ETTÝÐÝNDE TEST EDÝLMESÝ GEREKÝYOR!!!!!!!!!!!!!!!
-            roads.position = new(roads.position.x, roads.position.y, roads.position.z - 1.5f * Time.fixedDeltaTime);
+            #region saða ve sola geçiþ sýnýrý
+            //ÖNEMLÝ: eðer bu scriptin objesini deðiþtirmek gerekiyorsa transform.childcount deðiþtirilmesi gerekebilir.
+            if (transform.childCount < 50)
+                _touchPos = Mathf.Clamp(_touchPos, -xBorder, xBorder);
+            else
+                _touchPos = Mathf.Clamp(_touchPos, -2, 2);
+            #endregion
 
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime / 3), transform.position.y, transform.position.z);
 
         }
-        //yol ve alt objeleri geriye doðru olmasý gereken hýzda hareket edecektir
         else
         {
             roads.position = new(roads.position.x, roads.position.y, roads.position.z + -roadSpeed * Time.fixedDeltaTime);
@@ -127,7 +131,7 @@ public class MotionController : MonoBehaviour
             #endregion
 
             //player saða sola kaydýrma
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime * xSpeed), 0.4445743f, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime * xSpeed), transform.position.y, transform.position.z);
         }
     }
     #endregion

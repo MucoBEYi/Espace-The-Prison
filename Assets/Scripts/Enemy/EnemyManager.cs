@@ -32,10 +32,10 @@ public class EnemyManager : MonoBehaviour
         FormatEnemyStickMan();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         battleManager.EnemyOffence(player, transform);
-        LookPlayer();
+
 
         //bunun updateden kaldýrýp, daha az performans harcayacak bir yere taþýnmasý gerekiyor.
         EnemyAnimation(transform);
@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour
     #region kopyalanan düþman hizasý
     private void FormatEnemyStickMan()            //göze daha hoþ görüldüðü için IEnumerator yapýldý. EÐER AKSÝLÝK ÇIKARTIRSA GERÝ VOÝD HALÝNE DÖNDÜRÜLECEK
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 1; i < transform.childCount; i++)
         {
             //UFUFU WEWEWE ONYETEN WEWEWE UGÝMÝMÝ OSAS
             var x = distanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * radius);
@@ -55,18 +55,6 @@ public class EnemyManager : MonoBehaviour
 
             transform.GetChild(i).localPosition = _NewPos;
         }
-
-    }
-    #endregion
-
-    #region kopyalanan düþmanlarýn rotasyonu
-
-    private void LookPlayer()
-    {
-        Vector3 _PlayerDirection = player.position - transform.position;
-        //düþmanlar player transformuna rotasyonunu çevirir.
-        for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, quaternion.LookRotation(_PlayerDirection, Vector3.up), Time.deltaTime);
 
     }
     #endregion

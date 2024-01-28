@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6409532403607813822}
   - component: {fileID: 8778834317302216827}
   - component: {fileID: 7035364250844259270}
-  - component: {fileID: 4671925642133157848}
+  - component: {fileID: -6572898296019436166}
   m_Layer: 0
   m_Name: Blue Particle Prefabs
   m_TagString: Untagged
@@ -4898,7 +4898,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4671925642133157848
+--- !u!114 &-6572898296019436166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -55,42 +55,17 @@ public class PlayerManager : MonoBehaviour
         #endregion
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //bunun updateden kaldýrýp, daha az performans harcayacak bir yere taþýnmasý gerekiyor.
         getClass.animatorManager.PlayerAnimation(transform);
 
         #region player savaþ baþladýysa: düþmaný takip eder, düþmana doðru rotasyonunu çevirir.
         getClass.battleManager.PlayerOffence(enemy, transform);
-        LookEnemy();
+
         #endregion
 
     }
-
-    #region düþmana doðru pozisyon alma iþlemi
-    private Vector3 enemyDirection;
-    //eðer savaþ baþladýysa karakterlerimiz düþmana doðru bakar
-    void LookEnemy()
-    {
-        //savaþ baþlamadýysa diðer komutlara girmez
-        if (!getClass.battleManager.attackState)
-            return;
-
-        //DÜZELTÝLDÝ AMA B DA ÇIKABÝLÝR
-        //  Transform _Enemy = GameObject.FindGameObjectWithTag("enemyManager").transform.GetChild(0);
-        //her saniye bu iþlemi yapmasýný istemediðim için böyle bir önlem aldým(performans arttýrmak baÐbýnda)
-        if (enemyDirection == Vector3.zero)
-            enemyDirection = enemy.position - transform.position;
-
-        //karakter sayýsýný gösteren ve kameranýn dönmemesi için bu scripte baðlý objenin alt objelerine hükmediyorum
-        for (int i = 1; i < transform.childCount; i++)
-        {
-            //transform rotation yapýsýný öðrenmem gerekiyor..
-            transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(enemyDirection, Vector3.up), Time.deltaTime * 5);
-        }
-
-    }
-    #endregion
 
     #region stickman hizaya getirme iþlemi
     //kopyalanan stickmanlarýn pozisyonu

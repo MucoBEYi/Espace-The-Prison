@@ -24,11 +24,13 @@ public class ECharManager : MonoBehaviour
         if (collision.collider.CompareTag("blue") && battleManager.attackState && collision.transform.parent.childCount > 1)
         {
             enemyManager.TextUpdate();
-            StartCoroutine(battleManager.KillTheALL(collision.gameObject));
-
 
             //particle üretir
             Instantiate(redParticle, transform.position, Quaternion.identity);
+
+            StartCoroutine(battleManager.KillTheALL(collision.gameObject));
+
+
         }
     }
     #endregion
