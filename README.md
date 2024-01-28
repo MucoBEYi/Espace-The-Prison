@@ -11,7 +11,7 @@ hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı ka
 
 karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT DENİYOR).
 
-
+**********************************
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
@@ -27,7 +27,7 @@ karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor).
 
-
+**********************************
 
 DÜZELDİ(UMARIM):
 
