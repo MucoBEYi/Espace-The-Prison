@@ -27,12 +27,11 @@ BÜYÜK PROBLEMLİ OLAN SORUNLAR:
 
 oyun genel olarak kasıyor, optimizasyon yapılmalı(ENES beline kuvvet :D)
 
-karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor.
+karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(bazen de 1 tane fazla bırakıyor).
 
 FormatStickMan metodu çok fazla güç harcıyor.
 
 Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. sebebi bilinmiyor.
-
 
 
 **********************************
