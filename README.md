@@ -17,6 +17,8 @@ ParticleSystem pooling sistemine geçirilmeli(DÜZENLENİYOR, MÜCAHİT)
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
+animasyonlar update metodunda sürekli aktif olup olmadığını kontrol ediyor(performans sıkıntısı çıkarır, düzeltilmeli).
+
 geçitlerden geçince ortadan karakter spawnlanıyor. (bunun çözümü, poolingManager objesini, playerin alt objesi yapmak ama öyle yaparsak kodlarda düzenleme yapmamız gerekiyor. 2. yöntem playeri takip etmesi, o da update metodunu sürekli kullanmak anlamına geliyor, bu yüzden en sona bırakılacak bu sorun.)
 
 karakterleri ienumerator ile yapmaya çalışınca oyun çok kasıyor(voide çevrildi, çözüm bulunursa uygulanacak)
@@ -27,13 +29,15 @@ BÜYÜK PROBLEMLİ OLAN SORUNLAR:
 
 oyun genel olarak kasıyor, optimizasyon yapılmalı(ENES beline kuvvet :D)
 
-karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(bazen de 1 tane fazla bırakıyor).
-
 FormatStickMan metodu çok fazla güç harcıyor.
 
 **********************************
 
 DÜZELDİ(UMARIM):
+
+
+
+karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(MÜCAHİT DÜZELTTİ, playerManager SCRİPTİNDEKİ LİSTE KODU KALDIRILDI(DAHA EKLEMEDİM GİTHUBA)).
 
 Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. (MÜCAHİT DÜZELTTİ, SEBEBİ "PlayerManager" SCRİPTİNDEKİ GAMEOBJE LİSTESİNDEYDİ).
 
@@ -46,9 +50,6 @@ karakterin rotasyonu savaş bittikten sonra sıfırlanmıyor, bunu düzeltilmesi
 karakter/düşman karakter öldüğünde üstündeki text güncellenmiyor. (MÜCAHİT DÜZELTTİ)
 
 gates(geçitler)den 2 veya daha fazla geçince olması gerekenden daha fazla karakter oluşturuyor. (MÜCAHİT DÜZELTTİ)
-
-oyunu düşmanlar kazandığında:
-düşmanların animasyonu idle animasyonuna dönsün(bunun metodu enemyManager scriptinde yapılmalı). (MÜCAHİT DÜZELTTİ)
 
 oyuncu karakterin ve düşman üstündeki text, savaş sonrası hatalı konumlanma (MÜCAHİT DÜZELTTİ)
 
