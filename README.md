@@ -5,11 +5,8 @@ yapman gereken tek şey: prefabs klasöründeki blue ve red particle objelerinin
 
 UI düzenleniyor(A.Ş ilgileniyor).
 
-başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyunu başlatabiliyor(A.Ş ilgileniyor)
+karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT YAPIYOR. KOPYALAMA İŞLEMİ HALLEDİLDİ, DESTROY DÜZELTİLİYOR).  (yaptığım değişiklikleri eklemedim bir yere)
 
-hareket komutu tekrar yazılması gerekiyor(ray sistemine olan bağlılığı kaldırılmalı) (enes halledecek).
-
-karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT DENİYOR).
 
 **********************************
 
@@ -17,7 +14,7 @@ BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta. (GÜNCELLEME: SCRİPTLERİ NEREDEYSE BİTTİ UI KALDI VE OBSTACLE MODELLERİ EKSİK)
 
-düşmanlar koşma animasyonu çalışana kadar ölüyor(hareket komutu güncellendikten sonra düzeltilecek).
+
 
 Ses eklenecek(Onur Çiçek bu görev senindir)
 
@@ -46,5 +43,8 @@ oyuncu karakterin ve düşman üstündeki text, savaş sonrası hatalı konumlan
 
 obstacleye çarpınca particleEfect çalışacak(MÜCAHİT EKLEDİ)
 
+düşmanlar koşma animasyonu çalışana kadar ölüyor (DÜZELDİ).
 
+hareket komutu tekrar yazılması gerekiyor (ENES DÜZELTTİ).
 
+başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyunu başlatabiliyor(ENES DÜZELTTİ)
