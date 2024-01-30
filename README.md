@@ -19,8 +19,6 @@ BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 animasyonlar update metodunda sürekli aktif olup olmadığını kontrol ediyor(performans sıkıntısı çıkarır, düzeltilmeli).
 
-geçitlerden geçince ortadan karakter spawnlanıyor. (bunun çözümü, poolingManager objesini, playerin alt objesi yapmak ama öyle yaparsak kodlarda düzenleme yapmamız gerekiyor. 2. yöntem playeri takip etmesi, o da update metodunu sürekli kullanmak anlamına geliyor, bu yüzden en sona bırakılacak bu sorun.)
-
 karakterleri ienumerator ile yapmaya çalışınca oyun çok kasıyor(voide çevrildi, çözüm bulunursa uygulanacak)
 
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
