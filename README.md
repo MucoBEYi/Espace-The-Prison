@@ -3,30 +3,38 @@ DÜZENLENME AŞAMASINDA:
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor(Level Dizayncıyı kim belirlediyseniz o başlasın şimdiden)
 yapman gereken tek şey: prefabs klasöründeki blue ve red particle objelerinin görünümünü daha güzel hale getirmek(yardım için devoloperleri etiketleyebilirsin)
 
-UI düzenleniyor(A.Ş ilgileniyor).
+UI düzenleniyor(DÜZENLENİYOR, E.G).
 
-karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT YAPIYOR. KOPYALAMA İŞLEMİ HALLEDİLDİ, DESTROY DÜZELTİLİYOR).  (yaptığım değişiklikleri eklemedim bir yere)
+Ses eklenecek(DÜZENLENİYOR, A.Ş)
+
+ oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş)
 
 
 **********************************
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
-oyunu başlatma, finish, kazanma, kaybetme, obsctacle(engel) bulunmamakta. (GÜNCELLEME: SCRİPTLERİ NEREDEYSE BİTTİ UI KALDI VE OBSTACLE MODELLERİ EKSİK)
 
 
 
-Ses eklenecek(Onur Çiçek bu görev senindir)
-
-FormatStickMan metodu çok fazla güç harcıyor.
 
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor).
 
+BÜYÜK PROBLEMLİ OLAN SORUNLAR:
+
+FormatStickMan metodu çok fazla güç harcıyor.
+
+Savaşlarda ve obstacle ile etkileşime girildiğinde bazen hatalar çıkıyor. sebebi bilinmiyor.
+
+
+
 **********************************
 
 DÜZELDİ(UMARIM):
+
+karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT EKLEDİ).
 
 karakterin çoğalma hızı yavaş, bunu hızlandırmak gerekiyor. (MÜCAHİT DÜZELTTİ)
 
