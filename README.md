@@ -7,26 +7,27 @@ UI düzenleniyor(DÜZENLENİYOR, E.G).
 
 Ses eklenecek(DÜZENLENİYOR, A.Ş)
 
- oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş)
+oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş)
 
+çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor). (DÜZENLENİYOR, MÜCAHİT)
+
+ParticleSystem pooling sistemine geçirilmeli(DÜZENLENİYOR, MÜCAHİT)
 
 **********************************
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
-
-
-
-
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
-çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor).
+
 
 BÜYÜK PROBLEMLİ OLAN SORUNLAR:
 
+karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor.
+
 FormatStickMan metodu çok fazla güç harcıyor.
 
-Savaşlarda ve obstacle ile etkileşime girildiğinde bazen hatalar çıkıyor. sebebi bilinmiyor.
+Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. sebebi bilinmiyor.
 
 
 
