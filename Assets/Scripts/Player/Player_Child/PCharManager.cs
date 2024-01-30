@@ -11,6 +11,8 @@ public class PCharManager : MonoBehaviour
     //mavi kan diyebiliriz :D
     [SerializeField] ParticleSystem blueParticle;
 
+
+
     private void Start()
     {
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
@@ -18,21 +20,20 @@ public class PCharManager : MonoBehaviour
 
     }
 
-    #region çarpýþtýðýnda hem karakterimiz hem düþman ölür
+    #region çarpýþtýðýnda düþman ölür
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("red") && battleManager.attackState && collision.transform.parent.childCount > 0)
+        if (collision.collider.CompareTag("red") && battleManager.attackState && collision.transform.parent.childCount > 1)
         {
-            StartCoroutine(battleManager.KillTheALL(collision.gameObject));
+            battleManager.KillTheRed(collision.gameObject);
+            
 
             Instantiate(blueParticle, transform.position, Quaternion.identity);
 
             playerManager.TextUpdate();
+
         }
     }
     #endregion
-
-
-
 }
 

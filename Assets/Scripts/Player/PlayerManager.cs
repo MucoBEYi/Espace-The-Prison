@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using Unity.Mathematics;
 using System;
 
@@ -18,6 +16,8 @@ public class PlayerManager : MonoBehaviour
         public AnimatorManager animatorManager;
 
         public GameManager gameManager;
+
+        public ObjectPoolManager objectPoolManager;
     }
 
     [SerializeField] GetClass getClass;
@@ -45,11 +45,8 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         #region baþlangýç karakteri oluþturma, text güncelleme
-        GameObject firstChar = Instantiate(stickMan, new Vector3(transform.position.x, transform.position.y - 0.4445743f, transform.position.z), Quaternion.identity, transform);
-        stickmanList.Add(firstChar);
-
+        getClass.objectPoolManager.GetStickman();
         TextUpdate();
-
         //text aktif oluyor(hiyeraþide kapattým)
         transform.GetChild(0).gameObject.SetActive(true);
         #endregion
@@ -71,6 +68,8 @@ public class PlayerManager : MonoBehaviour
     //kopyalanan stickmanlarýn pozisyonu
     public void FormatStickMan()
     {
+        TextUpdate();
+        Alignment();
         for (int i = 1; i < stickmanList.Count + 1; i++)
         {
             //UFUFU WEWEWE ONYETEN WEWEWE UGÝMÝMÝ OSAS
@@ -86,8 +85,7 @@ public class PlayerManager : MonoBehaviour
         //text saða sola uçup kaçýyor onu önlemek baÐbýnda
         transform.GetChild(0).position = new Vector3(transform.position.x, transform.GetChild(0).position.y, transform.position.z);
 
-        TextUpdate();
-        Alignment();
+
     }
     #endregion
 
@@ -123,7 +121,7 @@ public class PlayerManager : MonoBehaviour
             GateManager _gateManager = other.GetComponent<GateManager>();
 
             //geçitten geçince stickman kopyalanýr
-            _gateManager.MakeStickMan(stickMan, gameObject);
+            _gateManager.GetStickman();
         }
         #endregion
 

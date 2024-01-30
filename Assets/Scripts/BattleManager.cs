@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    // bu scriptteki player yazan her transform playerManager scriptine ait olan playerin transformu
+
+
+
     [SerializeField] PlayerManager playerManager;
+    [SerializeField] GameManager gameManager;
+    [SerializeField] ObjectPoolManager objectPoolManager;
 
     #region atak kontrol
     public bool attackState;
@@ -14,8 +21,9 @@ public class BattleManager : MonoBehaviour
     private Vector3 playerDistance;
     private Vector3 enemyDistance;
 
+
     #region karakterler düþmanlarý takip eder ve eðer düþman kalmadýysa yapýlacak iþlemler
-    public void PlayerOffence(Transform enemyZone, Transform _Player)
+    public void PlayerOffence(Transform enemyZone, Transform player)
     {
         //savaþ yoksa diðer komutlarý çalýþtýrmaz
         if (!attackState)
@@ -23,15 +31,15 @@ public class BattleManager : MonoBehaviour
 
         //savaþ baþladýysa playerler enemy içine girer
         if (enemyZone.GetChild(0).childCount > 1)
-            for (int i = 1; i < _Player.childCount; i++)
+            for (int i = 1; i < player.childCount; i++)
             {
                 #region karakterin rotasyonunu düþmanlara çevirir
                 for (int j = 1; j < enemyZone.GetChild(0).childCount; j++)
                 {
-                    enemyDistance = enemyZone.GetChild(0).GetChild(j).position - _Player.GetChild(i).position;
+                    enemyDistance = enemyZone.GetChild(0).GetChild(j).position - player.GetChild(i).position;
                 }
 
-                _Player.GetChild(i).rotation = Quaternion.Slerp(_Player.GetChild(i).rotation, Quaternion.LookRotation(enemyDistance, Vector3.up), Time.fixedDeltaTime * 10);
+                player.GetChild(i).rotation = Quaternion.Slerp(player.GetChild(i).rotation, Quaternion.LookRotation(enemyDistance, Vector3.up), Time.fixedDeltaTime * 10);
 
                 #endregion
 
@@ -40,11 +48,11 @@ public class BattleManager : MonoBehaviour
 
 
                 if (enemyDistance.magnitude < 10f)      //düþman ile arasýndaki mesafe
-                    _Player.GetChild(i).position = Vector3.Lerp(_Player.GetChild(i).position, enemyZone.GetChild(0).GetChild(1).position, Time.fixedDeltaTime / 5);     //düþmana doðru ilerler
+                    player.GetChild(i).position = Vector3.Lerp(player.GetChild(i).position, enemyZone.GetChild(0).GetChild(1).position, Time.fixedDeltaTime / 5);     //düþmana doðru ilerler
 
 
                 //text 1. karakteri takip eder(bug fix)
-                _Player.GetChild(0).position = new Vector3(_Player.GetChild(0).position.x, _Player.GetChild(0).position.y, Mathf.Lerp(_Player.GetChild(0).position.z, _Player.GetChild(1).position.z, Time.fixedDeltaTime));
+                player.GetChild(0).position = new Vector3(player.GetChild(0).position.x, player.GetChild(0).position.y, Mathf.Lerp(player.GetChild(0).position.z, player.GetChild(1).position.z, Time.fixedDeltaTime));
                 #endregion
             }
         //düþman bittiyse
@@ -55,12 +63,16 @@ public class BattleManager : MonoBehaviour
             playerManager.FormatStickMan();
 
             print("düþman bitti");
+            if (playerManager.transform.childCount < 2) // Düþman bitse bile bazen bizde bitebiliyoruz :D bu kontrol bunun için
+            {
+                gameManager.LoseMenuActivity();
+            }
         }
     }
     #endregion
 
     #region düþmanlar karakteri takip eder, rotasyonunu karaktere çevirir ve kaybedildiyse yapýlacak iþlemler
-    public void EnemyOffence(Transform player, Transform enemy)          //player = playerManager
+    public void EnemyOffence(Transform player, Transform enemy)
     {
         //savaþ yoksa diðer komutlarý çalýþtýrmaz
         if (!attackState)
@@ -99,7 +111,7 @@ public class BattleManager : MonoBehaviour
             gameManager.gameState = false;
             attackState = false;
             player.GetChild(0).gameObject.SetActive(false);
-            gameManager.LoseMenu.SetActive(true);
+            gameManager.LoseMenuActivity();
             #endregion
 
             print("düþman kazandý");
@@ -110,12 +122,14 @@ public class BattleManager : MonoBehaviour
     #endregion
 
     #region DÝE DÝE DÝE DÝE DÝE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public IEnumerator KillTheALL(GameObject target)
+    public void KillTheRed(GameObject red)
     {
-        yield return new WaitForSecondsRealtime(0.3f);
-        Destroy(target.gameObject);
-        playerManager.stickmanList.Remove(target);
+       objectPoolManager.GiveRedStickman(red);
+    }
 
+    public void KillTheBlue(GameObject blue)
+    {
+        objectPoolManager.GiveBlueStickman(blue);     
     }
     #endregion
 }

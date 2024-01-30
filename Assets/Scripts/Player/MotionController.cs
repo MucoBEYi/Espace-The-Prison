@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MotionController : MonoBehaviour
 {
@@ -12,7 +7,6 @@ public class MotionController : MonoBehaviour
     private BattleManager battleManager;
 
     #region ray sistemi için gereken deðiþkenler
-    private Camera cam;
 
     private float _touchPos;
 
@@ -28,14 +22,15 @@ public class MotionController : MonoBehaviour
     #endregion
 
     #region saða sola kaydýrma sýnýrý deðiþkeni
-    private float xBorder = 3;
+    private float xBorder = 3f;
     #endregion
+
+    [SerializeField] float swipeSpeed = 2f;
+    [SerializeField] float sensibility = 0.1f;
 
 
     private void Start()
     {
-        //ya böyle tanýmlama þekli mi olur #@=!%
-        cam = Camera.main;
 
         gameManager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<GameManager>();
 
@@ -59,47 +54,33 @@ public class MotionController : MonoBehaviour
         Movement();
     }
 
-    #region Motion(hareket) iþlemlemleri
-    //kaydýrma
     void Swipe()
     {
-
         if (Input.touchCount > 0)
         {
             Touch _touch = Input.GetTouch(0);
 
-            //týkladýðýnda
-            if (_touch.phase == TouchPhase.Began)
+            switch (_touch.phase)
             {
-                TouchControl = true;
-            }
-            //elini kaldýrdýðýnda
-            if (_touch.phase == TouchPhase.Ended || _touch.phase == TouchPhase.Canceled)
-            {
-                TouchControl = false;
+                case TouchPhase.Began: //ekrana dokunmaya baþlandýðýnda deðiþkeni true yap
+                    TouchControl = true;
+                    break;
 
-            }
-        }
+                case TouchPhase.Moved: //Dokunma devam ediyorsa parmaðýn hareketine göre güncelleme yap
+                    if (TouchControl)
+                    {
+                        _touchPos += _touch.deltaPosition.x * swipeSpeed * sensibility * Time.deltaTime;
+                    }
+                    break;
 
-
-        if (TouchControl)
-        {
-            //AMACIN NE SENÝN YA
-            Plane _plane = new(Vector3.up, 0);          //buradaki 0 ne iþe yarýyor bilmiyorum ama 9999 yapýnca karakter çok fazla hýzla saða veya sola gidiyor.
-
-            //ekrandaki týklama pozisyonunu _ray a ekler(sanýrým)
-            Ray _ray = cam.ScreenPointToRay(Input.GetTouch(0).position);        //ray bu týklama pozisyonunu dünya kordinatýna çeviriyor, origin ve direction olarak 2 farklý kordinat veriyor(sanýrým)
-
-
-            //eðer _ray plane'ye çarparsa(sanýrým)
-            if (_plane.Raycast(_ray, out float distance))   //out float distance kýsmý ise týkladýðýmýz pozisyona baðlý olarak deðer döndürüyor.
-            {
-                _touchPos = _ray.GetPoint(distance).x;      // "Çarpma noktasýný al ve x koordinatýný al"  chat gpt açýklamasý, hiç bir þey anlamadým.
+                case TouchPhase.Ended: // dokunma bittiðinde deðiþkeni false yap
+                case TouchPhase.Canceled:
+                    TouchControl = false;
+                    break;
             }
         }
-
     }
-    //hareket komutu        EK BÝLGÝ: KARAKTER ÝLERÝ GÝTMEYECEK YOL GERÝ GELECEK
+
     void Movement()
     {
         //savaþ baþlarsa
@@ -134,7 +115,6 @@ public class MotionController : MonoBehaviour
             transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime * xSpeed), transform.position.y, transform.position.z);
         }
     }
-    #endregion
 }
 
 //bu script genel olarak: týkladýðýmýz ekran pozisyonuna göre hareket eder. eðer en sað tarafa týklarsak çok hýzlý, ekranýn ortasýnýn birazcýk saðýna týklarsak çok yavaþ bir þekilde saða gider.

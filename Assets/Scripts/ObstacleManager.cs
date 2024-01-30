@@ -1,29 +1,45 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    PlayerManager playerManager;
+    [SerializeField] GameManager gameManager;
+    private PlayerManager playerManager;
+    private BattleManager battleManager;
 
     [SerializeField] ParticleSystem blueParticle;
+
+
+    private void Start()
+    {
+        playerManager = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerManager>();
+        battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
+    }
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
         #region karakterimize çarparsa onu öldürür
         if (collision.collider.CompareTag("blue"))
         {
-            Destroy(collision.gameObject);
-            //mavi efekt çýkar ölen karakterin üzerinde
-            Instantiate(blueParticle, collision.transform.position, Quaternion.identity);
-
             #region karakter text ve liste güncellemesi
-            playerManager = collision.transform.parent.GetComponent<PlayerManager>();
             playerManager.stickmanList.Remove(collision.gameObject);
             playerManager.TextUpdate();
             #endregion
             StartCoroutine(FormatStickman());
+
+            battleManager.KillTheBlue(collision.gameObject);
+            //mavi efekt çýkar ölen karakterin üzerinde
+            Instantiate(blueParticle, collision.transform.position, Quaternion.identity);
+
+            if (playerManager.transform.childCount < 2) //eðer çöp adam kalmamýþsa.
+            {
+                print("Öldün");
+                gameManager.LoseMenuActivity(); // Kaybettin Ekranýný aç
+            }
+
+
         }
         #endregion
     }

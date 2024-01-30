@@ -12,26 +12,25 @@ public class ECharManager : MonoBehaviour
 
     private void Start()
     {
+        battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
         enemyManager = transform.parent.GetComponent<EnemyManager>();
 
-        battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
-
-
     }
+
     #region düþmanlar karakterlerimizi öldürür
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("blue") && battleManager.attackState && collision.transform.parent.childCount > 1)
         {
-            enemyManager.TextUpdate();
+            battleManager.KillTheBlue(collision.gameObject);
 
             //particle üretir
             Instantiate(redParticle, transform.position, Quaternion.identity);
 
-            StartCoroutine(battleManager.KillTheALL(collision.gameObject));
-
+            enemyManager.TextUpdate();
 
         }
     }
     #endregion
+
 }

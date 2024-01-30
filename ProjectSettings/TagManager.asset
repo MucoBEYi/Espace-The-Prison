@@ -15,6 +15,7 @@ TagManager:
   - finish
   - obstacle
   - animatorManager
+  - poolManager
   layers:
   - Default
   - TransparentFX

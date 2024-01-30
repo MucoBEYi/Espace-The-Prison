@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,70 +13,63 @@ public class GameManager : MonoBehaviour
     public bool attackDebug;
 
 
-    //A.Þ
-    public Button StartButton, RetryButton, WinButton, StopButton, StopMenuContentsButton;
-    public GameObject StartMenu, LoseMenu, WinMenu, StopMenuContents;
+    public GameObject StartMenu, LoseMenu, WinMenu, StopMenuContents, StopButton;
     private void Start()
     {
         gameState = false;
 
-        #region A.Þ
-        if (StartMenu != null)
-        {
-            StartButton.onClick.AddListener(StartButtonClicked);
-        }
-        if (LoseMenu != null)
-        {
-            RetryButton.onClick.AddListener(RetryButtonClicked);
-        }
-        if (WinMenu != null)
-        {
-            WinButton.onClick.AddListener(WinButtonClicked);
-        }
-        StopButton.onClick.AddListener(StopButtonClicked);
-        if (StopMenuContentsButton != null)
-        {
-            StopMenuContentsButton.onClick.AddListener(StopMenuButtonClicked);
-        }
-        #endregion
     }
     #region A.Þ metot iþlevleri için yorum satýrý ekler misin, anlarken zorlandým :D
-    void StartButtonClicked()
+    public void StartButtonClicked()
     {
-
+        StopButton.SetActive(true);
         StartMenu.SetActive(!StartMenu.activeSelf);
         gameState = true;
     }
-    void RetryButtonClicked()
+    public void RetryButtonClicked()
+    {
+        gameState = true;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StopButton.SetActive(true);
+    }
+    public void WinButtonClicked()
     {
         gameState = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    void WinButtonClicked()
+    public void StopButtonClicked()
     {
-        gameState = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    void StopButtonClicked()
-    {
+        StopButton.SetActive(false);
         attackDebug = battleManager.attackState;
         gameState = false;
         battleManager.attackState = false;
         StopMenuContents.SetActive(true);
 
     }
-    void StopMenuButtonClicked()
+    public void StopMenuButtonClicked()
     {
+        StopMenuContents.SetActive(false);
         gameState = true;
         battleManager.attackState = attackDebug;
-        StopMenuContents.SetActive(false);
+        StopButton.SetActive(true);
+    }
+
+    public void LoseMenuActivity() // Oyuncu öldüðünde Lose menusunu açmak için
+    {
+        StopButton.SetActive(false);
+        Time.timeScale = 0f;
+        gameState = false;
+        LoseMenu.SetActive(true);
     }
 
     #endregion
 
-    //oyun bittiðinde çalýþacak komutlar
-    public void GameWin()
+    
+    public void GameWin() //oyun bittiðinde uygulanacak iþlem
     {
+        StopButton.SetActive(false);
+        WinMenu.SetActive(true);
         gameState = false;
         print("oyunu KAZANDIN");
 

@@ -1,6 +1,4 @@
-using System.Collections;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
