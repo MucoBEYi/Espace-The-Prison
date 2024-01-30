@@ -17,7 +17,7 @@ ParticleSystem pooling sistemine geçirilmeli(DÜZENLENİYOR, MÜCAHİT)
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
-geçitlerden geçince ortadan karakter spawnlanıyor. 
+geçitlerden geçince ortadan karakter spawnlanıyor. (bunun çözümü, poolingManager objesini, playerin alt objesi yapmak ama öyle yaparsak kodlarda düzenleme yapmamız gerekiyor. 2. yöntem playeri takip etmesi, o da update metodunu sürekli kullanmak anlamına geliyor, bu yüzden en sona bırakılacak bu sorun.)
 
 karakterleri ienumerator ile yapmaya çalışınca oyun çok kasıyor(voide çevrildi, çözüm bulunursa uygulanacak)
 
