@@ -31,12 +31,11 @@ karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadi
 
 FormatStickMan metodu çok fazla güç harcıyor.
 
-Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. sebebi bilinmiyor.
-
-
 **********************************
 
 DÜZELDİ(UMARIM):
+
+Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. (MÜCAHİT DÜZELTTİ, SEBEBİ "PlayerManager" SCRİPTİNDEKİ GAMEOBJE LİSTESİNDEYDİ).
 
 karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT EKLEDİ).
 
