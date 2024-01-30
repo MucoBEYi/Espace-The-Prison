@@ -17,11 +17,15 @@ ParticleSystem pooling sistemine geçirilmeli(DÜZENLENİYOR, MÜCAHİT)
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
+geçitlerden geçince ortadan karakter spawnlanıyor. 
+
+karakterleri ienumerator ile yapmaya çalışınca oyun çok kasıyor(voide çevrildi, çözüm bulunursa uygulanacak)
+
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
-
-
 BÜYÜK PROBLEMLİ OLAN SORUNLAR:
+
+oyun genel olarak kasıyor, optimizasyon yapılmalı(ENES beline kuvvet :D)
 
 karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor.
 
