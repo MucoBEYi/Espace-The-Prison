@@ -11,8 +11,6 @@ oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor). (DÜZENLENİYOR, MÜCAHİT)
 
-ParticleSystem pooling sistemine geçirilmeli(DÜZENLENİYOR, MÜCAHİT)
-
 **********************************
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
@@ -58,3 +56,5 @@ düşmanlar koşma animasyonu çalışana kadar ölüyor (DÜZELDİ).
 hareket komutu tekrar yazılması gerekiyor (ENES DÜZELTTİ).
 
 başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyunu başlatabiliyor(ENES DÜZELTTİ)
+
+ParticleSystem pooling sistemine geçirilmeli(MÜCAHİT DÜZELTTİ).
