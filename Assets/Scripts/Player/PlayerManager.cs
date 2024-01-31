@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject stickMan;
 
     //stickman sayýsýný tutan liste
-    public List<GameObject> stickmanList;
+    // public List<GameObject> stickmanList;
 
     //karakter sayýsýný tutar. ek bilgi: player objesinin alt objesindeki textte tutar.
     [SerializeField] private TextMeshPro CounterTxt;
@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         #region baþlangýç karakteri oluþturma, text güncelleme
-        getClass.objectPoolManager.GetStickman();
+        getClass.objectPoolManager.GetBlueStickman();
         TextUpdate();
         //text aktif oluyor(hiyeraþide kapattým)
         transform.GetChild(0).gameObject.SetActive(true);
@@ -70,7 +70,7 @@ public class PlayerManager : MonoBehaviour
     {
         TextUpdate();
         Alignment();
-        for (int i = 1; i < stickmanList.Count + 1; i++)
+        for (int i = 1; i < transform.childCount; i++)
         {
             //UFUFU WEWEWE ONYETEN WEWEWE UGÝMÝMÝ OSAS
             var x = distanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * radius);
@@ -103,7 +103,7 @@ public class PlayerManager : MonoBehaviour
     #region karakterlerin sayýsýný gösteren text güncellemesi
     public void TextUpdate()
     {
-        CounterTxt.text = stickmanList.Count.ToString();
+        CounterTxt.text = (transform.childCount - 1).ToString();
     }
     #endregion
 
@@ -121,7 +121,7 @@ public class PlayerManager : MonoBehaviour
             GateManager _gateManager = other.GetComponent<GateManager>();
 
             //geçitten geçince stickman kopyalanýr
-            _gateManager.GetStickman();
+            _gateManager.GetStickman(transform);
         }
         #endregion
 

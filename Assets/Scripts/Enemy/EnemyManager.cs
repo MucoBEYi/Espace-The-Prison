@@ -7,6 +7,8 @@ public class EnemyManager : MonoBehaviour
 
     BattleManager battleManager;
 
+    ObjectPoolManager poolManager;
+
     #region düþman prefabs ve Text
 
     [SerializeField] TextMeshPro CounterTxt;
@@ -25,7 +27,11 @@ public class EnemyManager : MonoBehaviour
 
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
 
-        MakeEnemyStickman(UnityEngine.Random.Range(20, 35));
+        poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
+
+        poolManager.MakeRedStickman(Random.Range(50, 60), transform);
+
+        TextUpdate();
 
         FormatEnemyStickMan();
     }
@@ -33,8 +39,6 @@ public class EnemyManager : MonoBehaviour
     private void FixedUpdate()
     {
         battleManager.EnemyOffence(player, transform);
-
-
         //bunun updateden kaldýrýp, daha az performans harcayacak bir yere taþýnmasý gerekiyor.
         EnemyAnimation(transform);
     }
@@ -57,20 +61,6 @@ public class EnemyManager : MonoBehaviour
     }
     #endregion
 
-    #region stickman kopyalama iþlemleri
-    //kopyalanacak düþman
-    void MakeEnemyStickman(int randomEnemy)
-    {
-
-        for (int i = 0; i < randomEnemy; i++)
-        {
-            Instantiate(enemyPrefabs, transform.position, new Quaternion(0, 180, 0, 1), transform);
-        }
-
-        TextUpdate();
-    }
-    #endregion
-
     #region düþmanlar için animasyon 
     private void EnemyAnimation(Transform enemy)
     {
@@ -89,7 +79,11 @@ public class EnemyManager : MonoBehaviour
     #region düþmanlarýn sayýsýný gösteren text güncellemesi
     public void TextUpdate()
     {
-        CounterTxt.text = transform.childCount.ToString();
+        if (transform.childCount == 1)
+            transform.GetChild(0).gameObject.SetActive(false);
+
+        CounterTxt.text = (transform.childCount - 1).ToString();
+
     }
     #endregion
 

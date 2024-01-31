@@ -192,8 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!23 &32495760
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -752,6 +750,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228048231}
   m_Mesh: {fileID: -462981019419857548, guid: c822cef79a7d106468a5e2914c960e51, type: 3}
+--- !u!1 &240030598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240030599}
+  m_Layer: 0
+  m_Name: RedParticleSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240030599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240030598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1317133786}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288339867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,8 +1348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!1 &341531441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,8 +1396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!23 &341531445
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2419,8 +2444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!65 &479591289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2720,8 +2743,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!65 &502998830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3084,7 +3105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 1244640113}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1804733081}
   objectPoolManager: {fileID: 1317133785}
   attackState: 0
 --- !u!4 &782955819
@@ -4241,7 +4262,7 @@ GameObject:
   m_Layer: 0
   m_Name: Finish
   m_TagString: finish
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4357,7 +4378,6 @@ MonoBehaviour:
     objectPoolManager: {fileID: 1317133785}
   stickMan: {fileID: 2464238508434606353, guid: 9e1443db794b90140ab51de67a4c8237,
     type: 3}
-  stickmanList: []
   CounterTxt: {fileID: 2009641968}
   distanceFactor: 0.16
   radius: 0.75
@@ -4831,7 +4851,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueGO: {fileID: 2464238508434606353, guid: 9e1443db794b90140ab51de67a4c8237, type: 3}
-  poolSize: 100
+  poolSize: 2
+  redGO: {fileID: 2464238508434606353, guid: ad02ed02807d15f43a03abebb8bb8580, type: 3}
+  blueParticleEffectPS: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
+    type: 3}
+  redParticleEffectPS: {fileID: 2187220382632525210, guid: dc03e80d3addcef4e93fc42000409570,
+    type: 3}
 --- !u!4 &1317133786
 Transform:
   m_ObjectHideFlags: 0
@@ -4847,6 +4872,8 @@ Transform:
   m_Children:
   - {fileID: 205793731}
   - {fileID: 1805156326}
+  - {fileID: 1497722066}
+  - {fileID: 240030599}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1443795061
@@ -5074,6 +5101,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1497722065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1497722066}
+  m_Layer: 0
+  m_Name: BlueParticleSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1497722066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497722065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1317133786}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584019723
 GameObject:
   m_ObjectHideFlags: 0
@@ -10144,8 +10202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!114 &7212472323799902566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10466,8 +10522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!1 &8453944507880803672
 GameObject:
   m_ObjectHideFlags: 0
@@ -10537,8 +10591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!65 &8513859188015059076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10818,8 +10870,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1804733081}
-  blueParticle: {fileID: 8778834317302216827, guid: 150e5083f2fb23c4eb96716677712536,
-    type: 3}
 --- !u!65 &8670761335152317036
 BoxCollider:
   m_ObjectHideFlags: 0

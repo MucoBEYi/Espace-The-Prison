@@ -62,10 +62,16 @@ public class BattleManager : MonoBehaviour
             enemyZone.gameObject.SetActive(false);
             playerManager.FormatStickMan();
 
-            print("düþman bitti");
-            if (playerManager.transform.childCount < 2) // Düþman bitse bile bazen bizde bitebiliyoruz :D bu kontrol bunun için
+            Debug.Log("düþman bitti");
+
+            if (player.childCount < 2) //önlem
             {
+                Debug.Log("Düþman ile ayný anda bittin");
+                gameManager.gameState = false;
+                attackState = false;
+                player.GetChild(0).gameObject.SetActive(false);
                 gameManager.LoseMenuActivity();
+
             }
         }
     }
@@ -106,17 +112,18 @@ public class BattleManager : MonoBehaviour
         #region oyun kaybedildiðinde çalýþacak kodlar
         else if (enemy.childCount > 1)
         {
-            #region oyunu bitirir
-            GameManager gameManager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<GameManager>();
+            #region oyunu bitirir            
+            EnemyManager enemyManager = enemy.GetComponent<EnemyManager>();
+            enemyManager.TextUpdate();
             gameManager.gameState = false;
             attackState = false;
             player.GetChild(0).gameObject.SetActive(false);
             gameManager.LoseMenuActivity();
             #endregion
-
             print("düþman kazandý");
         }
         #endregion
+
     }
 
     #endregion
@@ -124,12 +131,12 @@ public class BattleManager : MonoBehaviour
     #region DÝE DÝE DÝE DÝE DÝE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void KillTheRed(GameObject red)
     {
-       objectPoolManager.GiveRedStickman(red);
+        objectPoolManager.GiveRedStickman(red);
     }
 
     public void KillTheBlue(GameObject blue)
     {
-        objectPoolManager.GiveBlueStickman(blue);     
+        objectPoolManager.GiveBlueStickman(blue);
     }
     #endregion
 }

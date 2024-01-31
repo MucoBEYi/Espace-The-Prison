@@ -89,7 +89,8 @@ public class MotionController : MonoBehaviour
             roads.position = new(roads.position.x, roads.position.y, roads.position.z + 0 * Time.fixedDeltaTime);
 
             #region saða ve sola geçiþ sýnýrý
-            //ÖNEMLÝ: eðer bu scriptin objesini deðiþtirmek gerekiyorsa transform.childcount deðiþtirilmesi gerekebilir.
+
+
             if (transform.childCount < 50)
                 _touchPos = Mathf.Clamp(_touchPos, -xBorder, xBorder);
             else
@@ -104,7 +105,6 @@ public class MotionController : MonoBehaviour
             roads.position = new(roads.position.x, roads.position.y, roads.position.z + -roadSpeed * Time.fixedDeltaTime);
 
             #region saða ve sola geçiþ sýnýrý
-            //ÖNEMLÝ: eðer bu scriptin objesini deðiþtirmek gerekiyorsa transform.childcount deðiþtirilmesi gerekebilir.
             if (transform.childCount < 50)
                 _touchPos = Mathf.Clamp(_touchPos, -xBorder, xBorder);
             else

@@ -1,23 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class PCharManager : MonoBehaviour
 {
     private BattleManager battleManager;
     private PlayerManager playerManager;
-
-    //mavi kan diyebiliriz :D
-    [SerializeField] ParticleSystem blueParticle;
-
-
+    private ObjectPoolManager poolManager;
 
     private void Start()
     {
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
         playerManager = transform.parent.GetComponent<PlayerManager>();
-
+        poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();    
     }
 
     #region çarpýþtýðýnda düþman ölür
@@ -26,9 +23,8 @@ public class PCharManager : MonoBehaviour
         if (collision.collider.CompareTag("red") && battleManager.attackState && collision.transform.parent.childCount > 1)
         {
             battleManager.KillTheRed(collision.gameObject);
-            
 
-            Instantiate(blueParticle, transform.position, Quaternion.identity);
+            poolManager.BlueParticleActivate(transform);
 
             playerManager.TextUpdate();
 

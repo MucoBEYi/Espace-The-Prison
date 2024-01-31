@@ -6,14 +6,14 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] GameManager gameManager;
     private PlayerManager playerManager;
     private BattleManager battleManager;
-
-    [SerializeField] ParticleSystem blueParticle;
+    private ObjectPoolManager poolManager;
 
 
     private void Start()
     {
         playerManager = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerManager>();
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
+        poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
     }
 
 
@@ -24,22 +24,22 @@ public class ObstacleManager : MonoBehaviour
         if (collision.collider.CompareTag("blue"))
         {
             #region karakter text ve liste güncellemesi
-            playerManager.stickmanList.Remove(collision.gameObject);
+
             playerManager.TextUpdate();
             #endregion
             StartCoroutine(FormatStickman());
 
             battleManager.KillTheBlue(collision.gameObject);
-            //mavi efekt çýkar ölen karakterin üzerinde
-            Instantiate(blueParticle, collision.transform.position, Quaternion.identity);
+
+            //partikýl metodu gelecek
+            poolManager.BlueParticleActivate(collision.transform);
 
             if (playerManager.transform.childCount < 2) //eðer çöp adam kalmamýþsa.
             {
-                print("Öldün");
+                playerManager.transform.GetChild(0).gameObject.SetActive(false);
                 gameManager.LoseMenuActivity(); // Kaybettin Ekranýný aç
+                print("Obstacle tarafýndan öldürüldün");
             }
-
-
         }
         #endregion
     }

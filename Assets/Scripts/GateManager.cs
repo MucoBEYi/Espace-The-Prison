@@ -62,11 +62,11 @@ public class GateManager : MonoBehaviour
 
 
     #region stickman kopyalama 
-    public void GetStickman()
+    public void GetStickman(Transform player)
     {
         //çarpma iþlemi gelirse
         if (gateType == GateType.multiply)
-            randomNumber = (randomNumber * playerManager.stickmanList.Count) - playerManager.stickmanList.Count;
+            randomNumber = (player.transform.childCount - 1) * randomNumber - player.transform.childCount + 1;
         //çýkarma iþlemi gelirse
         else if (gateType == GateType.subtraction)
         {
@@ -74,7 +74,7 @@ public class GateManager : MonoBehaviour
         }
 
         for (int i = 0; i < randomNumber; i++)
-            objectPoolManager.GetStickman();
+            objectPoolManager.GetBlueStickman();
 
 
         #region text ve format güncellemesi

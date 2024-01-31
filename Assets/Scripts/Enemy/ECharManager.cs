@@ -7,13 +7,14 @@ public class ECharManager : MonoBehaviour
     private EnemyManager enemyManager;
 
     private BattleManager battleManager;
-    //kan
-    [SerializeField] ParticleSystem redParticle;
+
+    private ObjectPoolManager poolManager;
 
     private void Start()
     {
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
         enemyManager = transform.parent.GetComponent<EnemyManager>();
+        poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
 
     }
 
@@ -24,8 +25,7 @@ public class ECharManager : MonoBehaviour
         {
             battleManager.KillTheBlue(collision.gameObject);
 
-            //particle üretir
-            Instantiate(redParticle, transform.position, Quaternion.identity);
+            poolManager.RedParticleActivate(transform);
 
             enemyManager.TextUpdate();
 

@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public void RetryButtonClicked()
     {
         gameState = true;
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         StopButton.SetActive(true);
     }
@@ -58,7 +57,6 @@ public class GameManager : MonoBehaviour
     public void LoseMenuActivity() // Oyuncu öldüðünde Lose menusunu açmak için
     {
         StopButton.SetActive(false);
-        Time.timeScale = 0f;
         gameState = false;
         LoseMenu.SetActive(true);
     }

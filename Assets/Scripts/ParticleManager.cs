@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
+    //ObjectPoolManager poolManager;
     void Start()
     {
-        StartCoroutine(ParticleDeactivate());
-    }
+        //  poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
 
-    IEnumerator ParticleDeactivate()
-    {
-        yield return new WaitForSecondsRealtime(2);
-        gameObject.SetActive(false);
     }
 }
 
