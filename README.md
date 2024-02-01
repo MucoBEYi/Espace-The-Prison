@@ -7,7 +7,7 @@ UI düzenleniyor(DÜZENLENİYOR, E.G).
 
 oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş)
 
-çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor(pool sistemine geçiş yapılınca düzeltilmesi bekleniyor). (DÜZENLENİYOR, MÜCAHİT)
+oyun genel olarak kasıyor, optimizasyon yapılmalı: artistler poligon sayısı düşüyor, yazılımcılar performansı etkileyecek işlemleri araştırıyor(SORUNUN ANA KAYNAĞI KULLANDIĞIMIZ MODELLER)
 
 **********************************
 
@@ -21,7 +21,7 @@ karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
 BÜYÜK PROBLEMLİ OLAN SORUNLAR:
 
-oyun genel olarak kasıyor, optimizasyon yapılmalı(ENES beline kuvvet :D)
+
 
 FormatStickMan metodu çok fazla güç harcıyor.
 
@@ -58,3 +58,5 @@ başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyu
 ParticleSystem pooling sistemine geçirilmeli(MÜCAHİT DÜZELTTİ).
 
 Ses eklenecek(ENES BİTİRDİ)
+
+çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor. (MÜCAHİT DÜZELTTİ)
