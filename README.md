@@ -3,9 +3,7 @@ DÜZENLENME AŞAMASINDA:
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor(Level Dizayncıyı kim belirlediyseniz o başlasın şimdiden)
 yapman gereken tek şey: prefabs klasöründeki blue ve red particle objelerinin görünümünü daha güzel hale getirmek(yardım için devoloperleri etiketleyebilirsin)
 
-UI düzenleniyor(DÜZENLENİYOR, E.G).
-
-oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş)
+oyunu başlatma, finish, kazanma, kaybetme, obsctacle (BİTTİ SAYILIR, BAZI UFAK TEFEK HATALAR TEST EDİLMELİ)
 
 oyun genel olarak kasıyor, optimizasyon yapılmalı: artistler poligon sayısı düşüyor, yazılımcılar performansı etkileyecek işlemleri araştırıyor(SORUNUN ANA KAYNAĞI KULLANDIĞIMIZ MODELLER)
 
@@ -20,8 +18,6 @@ karakterleri ienumerator ile yapmaya çalışınca oyun çok kasıyor(voide çev
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
 BÜYÜK PROBLEMLİ OLAN SORUNLAR:
-
-
 
 FormatStickMan metodu çok fazla güç harcıyor.
 
@@ -60,3 +56,5 @@ ParticleSystem pooling sistemine geçirilmeli(MÜCAHİT DÜZELTTİ).
 Ses eklenecek(ENES BİTİRDİ)
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor. (MÜCAHİT DÜZELTTİ)
+
+UI tasarım eklenecek(EKLENDİ)
