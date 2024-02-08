@@ -23,7 +23,7 @@ public class BossAttack : MonoBehaviour
         if (other.CompareTag("player"))
         {
             //3 tane karakterimizi öldürür
-            for (int i = 0; i < Random.Range(3, 5); i++)
+            for (int i = 0; i < 3; i++)
             {
                 battleManager.KillTheBlue(other.transform.GetChild(1).gameObject);
                 soundManager.BattleSound();

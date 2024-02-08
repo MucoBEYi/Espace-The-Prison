@@ -14,10 +14,6 @@ public class GameManager : MonoBehaviour
     private ObjectPoolManager poolManager;
 
 
-    //kodlarýn annesini sikme operasyonu baþlasýn(gerçi çoktan sikildi de QWERQEWTQWER)
-    [SerializeField] VCamManager vCamManager;
-
-
     //true = oyun çalýþýyor
     public bool gameState;
 
@@ -183,7 +179,7 @@ public class GameManager : MonoBehaviour
             poolManager.GiveBlueStickman(player.GetChild(1).gameObject);
         poolManager.GetBlueStickman();
         player.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = (player.childCount - 1).ToString();
-        player.position = Vector3.zero;
+        player.position = new Vector3(0, 0.5f, 0);
         player.GetChild(0).gameObject.SetActive(true);
         player.GetChild(0).position = new Vector3(player.position.x, player.GetChild(0).position.y, player.position.z);
     }

@@ -52,7 +52,6 @@ public class PlayerManager : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         #endregion
         getClass.soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        getClass.bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossManager>();
     }
 
     private void FixedUpdate()
@@ -176,8 +175,11 @@ public class PlayerManager : MonoBehaviour
         }
 
         if (other.CompareTag("BossFight"))
-            getClass.bossManager.bossBattlestate = true;
+        {
+            getClass.bossManager = other.transform.GetChild(1).GetComponent<BossManager>();
 
+            getClass.bossManager.bossBattlestate = true;
+        }
         #endregion
     }
 }

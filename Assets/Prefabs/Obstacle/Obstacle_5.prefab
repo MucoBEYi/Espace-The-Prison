@@ -63,11 +63,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0c2a92311962cc4fbd57e83d75ab3e2, type: 2}
-  - {fileID: 2100000, guid: 8b1072a2050658640b88addd99f924ed, type: 2}
-  - {fileID: 2100000, guid: e0c2a92311962cc4fbd57e83d75ab3e2, type: 2}
-  - {fileID: 2100000, guid: 8b1072a2050658640b88addd99f924ed, type: 2}
-  - {fileID: 2100000, guid: e0c2a92311962cc4fbd57e83d75ab3e2, type: 2}
+  - {fileID: 2100000, guid: 98392947e10d2ba498781455cb561b75, type: 2}
+  - {fileID: 2100000, guid: a4655432659fd284c8e2cd385e2edaa2, type: 2}
+  - {fileID: 2100000, guid: 98392947e10d2ba498781455cb561b75, type: 2}
+  - {fileID: 2100000, guid: a4655432659fd284c8e2cd385e2edaa2, type: 2}
+  - {fileID: 2100000, guid: 98392947e10d2ba498781455cb561b75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 1863024733910016834}
   serializedVersion: 2
   m_LocalRotation: {x: 0.41469327, y: 0, z: 0, w: 0.9099613}
-  m_LocalPosition: {x: 0.217, y: 1.82, z: 4.343}
+  m_LocalPosition: {x: -0, y: -1.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -181,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 3341499006562870805}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.21633968, y: 1.7892036, z: 4.447051}
+  m_LocalPosition: {x: -0, y: -1.41, z: 0}
   m_LocalScale: {x: 30.79453, y: 27.576235, z: 170.8301}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -215,7 +215,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78aa5fe5a8c7bef49bb5424b3f0298ab, type: 2}
+  - {fileID: 2100000, guid: 63118f4c258777b48a1390d43ce1069f, type: 2}
   - {fileID: 2100000, guid: 78aa5fe5a8c7bef49bb5424b3f0298ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -252,7 +252,7 @@ GameObject:
   m_Layer: 0
   m_Name: Obstacle_5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

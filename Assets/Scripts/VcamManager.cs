@@ -27,7 +27,7 @@ public class VCamManager : MonoBehaviour
     }
 
 
-    public void GetCameraPos()              //formatstickman metoduna atýlacak.
+    public void GetCameraPos()              
     {
         Vector3 playerOffset = new Vector3(0, 5.37f, -4.31f);
 

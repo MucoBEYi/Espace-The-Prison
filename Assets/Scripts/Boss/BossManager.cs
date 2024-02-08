@@ -71,7 +71,7 @@ public class BossManager : MonoBehaviour
             animator.SetBool("run", true);
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
-            //özür dilerim ama artýk proje o kadar çorba oldu ki, neyi nereye yazacaðýmý bilemedim.. bir daha proje yaparsam ilk neyi nereye yazacaðýmý not alacam aq
+            //özür dilerim ama artýk proje o kadar çorba oldu ki, neyi nereye yazacaðýmý bilemedim.. bir daha proje yaparsam ilk neyi nereye yazacaðýmý not alacam 
             for (int i = 1; i < player.childCount; i++)         //bu fordaki etkilerinin genel olarak amacý: prisoner karakterleri rotasyonunu bossa çevirir ve ona doðru ilerler
             {
                 player.GetChild(i).LookAt(transform.position);

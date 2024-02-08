@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.06
+      value: -194.56216
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
         type: 3}
@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 123.66
+      value: 14.153282
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
         type: 3}
@@ -62,11 +62,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8b1072a2050658640b88addd99f924ed, type: 2}
+      objectReference: {fileID: 2100000, guid: 78aa5fe5a8c7bef49bb5424b3f0298ab, type: 2}
     - target: {fileID: 919132149155446097, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
         type: 3}
       propertyPath: m_Name
       value: Obstacle_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
+        type: 3}
+      propertyPath: m_TagString
+      value: obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -76,6 +81,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5566423606204389194}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 05f5d82567eb1584fa5e1afbed6ced6c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6803212771456652813}
   m_SourcePrefab: {fileID: 100100000, guid: 05f5d82567eb1584fa5e1afbed6ced6c, type: 3}
 --- !u!1 &8381204942672822868 stripped
 GameObject:
@@ -104,3 +113,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6803212771456652813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381204942672822868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc5e568bb695d4439bc467b4af914ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

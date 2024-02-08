@@ -27,8 +27,7 @@ public class AnimatorManager : MonoBehaviour
      {
          for (int i = 0; i < player.childCount; i++)
          {
-             Animator _PlayerAnimator = player.GetChild(i).GetComponent<Animator>();        //eþek deðilsen çözersin
-
+             Animator _PlayerAnimator = player.GetChild(i).GetComponent<Animator>();        
              _PlayerAnimator.SetBool("runner", true);
          }
      }*/

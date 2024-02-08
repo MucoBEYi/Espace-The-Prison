@@ -12,7 +12,7 @@ public class PCharManager : MonoBehaviour
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
         playerManager = transform.parent.GetComponent<PlayerManager>();
         poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
-        bossManager = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossManager>();
+
     }
 
     #region çarpýþtýðýnda düþman ölür
@@ -34,6 +34,7 @@ public class PCharManager : MonoBehaviour
 
         if (collision.collider.CompareTag("Boss"))
         {
+            bossManager = collision.collider.GetComponent<BossManager>();
             bossManager.BossDamage(2);
             bossManager.bossTxt.text = bossManager.bossHealth.ToString();
         }
