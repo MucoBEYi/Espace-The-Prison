@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3877956835675733980}
   - component: {fileID: 692743978047228290}
   - component: {fileID: 7138984652177338761}
+  - component: {fileID: 9194864759896136259}
   m_Layer: 0
   m_Name: Cylinder.013
   m_TagString: Untagged
@@ -121,6 +122,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.032602552, y: 0.032602552, z: 0.022918925}
   m_Center: {x: -0.0000000018626451, y: -0.0000000037252903, z: 0.0014594621}
+--- !u!54 &9194864759896136259
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159078036373780020}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2700860583119731819
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +332,7 @@ GameObject:
   - component: {fileID: 7397515928875970070}
   - component: {fileID: 1829866460932250137}
   - component: {fileID: 7897270000038815715}
+  - component: {fileID: 4322217394242035814}
   m_Layer: 0
   m_Name: Cylinder.012
   m_TagString: Untagged
@@ -412,6 +441,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.032602552, y: 0.032602552, z: 0.022918925}
   m_Center: {x: -0.0000000018626451, y: -0.0000000018626451, z: 0.0014594621}
+--- !u!54 &4322217394242035814
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572412122508957876}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &6958188199764909064
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +481,7 @@ GameObject:
   - component: {fileID: 1069722611398482955}
   - component: {fileID: 8715950181988108231}
   - component: {fileID: 1739886582816147860}
+  - component: {fileID: 4363976941411745423}
   m_Layer: 0
   m_Name: Cylinder.014
   m_TagString: Untagged
@@ -533,6 +590,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.032602552, y: 0.032602552, z: 0.022918923}
   m_Center: {x: -0.00000024028122, y: -0.0000000018626451, z: 0.0014575546}
+--- !u!54 &4363976941411745423
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958188199764909064}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7251371561257715457
 GameObject:
   m_ObjectHideFlags: 0

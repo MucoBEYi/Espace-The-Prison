@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
 
     //true = oyun çalýþýyor
-    public bool gameState, bossBattlestate;
+    public bool gameState, bossBattlestate;         //bossManager scriptinden buraya taþýndý.
 
     //oyun durdurduðunda attack da pasif oluyor, oyunu tekrar baþlattýðýnda eðer savaþta ise tekrar aktif olmasý gerekiyor.
     public bool attackDebug;
@@ -237,5 +237,6 @@ public class GameManager : MonoBehaviour
         yield return null;      //kameranýn playere gelme süresiyle eþit yapýn!!
         StartMenu.SetActive(true);
     }
+
 
 }

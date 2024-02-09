@@ -63,6 +63,10 @@ public class VCamManager : MonoBehaviour
 
             transposer.m_FollowOffset = Vector3.Lerp(startFollowOffset, targetOffset, t);
 
+
+            //burasý yeni eklendi(düzeltilmesi gerekiyor sanýrým).
+            startFollowOffset = transposer.m_FollowOffset;
+
             yield return null;
         }
     }

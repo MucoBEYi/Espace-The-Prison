@@ -60,7 +60,7 @@ public class BossManager : MonoBehaviour
         {
             //valla bütün tuþlara bastým, çalýþýyor mu? çalýþýyor.
             if ((player.position - transform.position).magnitude > 1)
-                transform.position = Vector3.MoveTowards(transform.position, player.position, bossSpeed * Time.deltaTime);
+                transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, player.position.x, bossSpeed * Time.deltaTime), transform.position.y, Mathf.MoveTowards(transform.position.z, player.position.z, bossSpeed * Time.deltaTime));
             else
                 transform.position -= new Vector3(0, 0, Mathf.Lerp(0, -2, Time.deltaTime / 5));
 
@@ -74,10 +74,9 @@ public class BossManager : MonoBehaviour
             //özür dilerim ama artýk proje o kadar çorba oldu ki, neyi nereye yazacaðýmý bilemedim.. bir daha proje yaparsam ilk neyi nereye yazacaðýmý not alacam 
             for (int i = 1; i < player.childCount; i++)         //bu fordaki etkilerinin genel olarak amacý: prisoner karakterleri rotasyonunu bossa çevirir ve ona doðru ilerler
             {
-                player.GetChild(i).LookAt(transform.position);
+                player.GetChild(i).LookAt(new Vector3(transform.position.x, player.GetChild(i).position.y, transform.position.z));
                 if ((player.position - transform.position).magnitude > 2)
-                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, transform.position, Time.deltaTime);
-
+                    player.GetChild(i).position = new Vector3(player.GetChild(i).position.x, player.GetChild(i).position.y, Mathf.MoveTowards(player.GetChild(i).position.z, transform.position.z - 5, Time.deltaTime));
 
             }
 

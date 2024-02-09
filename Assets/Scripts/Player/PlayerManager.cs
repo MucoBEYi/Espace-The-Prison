@@ -87,7 +87,9 @@ public class PlayerManager : MonoBehaviour
             // Eðer hareket süresi her obje için farklý ise
             // float moveTime = i * 0.1f + 1.0f; // Örnek: her obje 0.1 saniye daha fazla sürede hareket etsin
 
-            MoveObjectLinear(transform.GetChild(i), newPos, moveTime);
+
+            if (!getClass.battleManager.attackState && !getClass.gameManager.bossBattlestate)            
+                MoveObjectLinear(transform.GetChild(i), newPos, moveTime);
         }
 
         transform.GetChild(0).position = new Vector3(transform.position.x, transform.GetChild(0).position.y, transform.position.z);
