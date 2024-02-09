@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class ObstacleManager : MonoBehaviour
     private BattleManager battleManager;
     private ObjectPoolManager poolManager;
     private SoundManager soundManager;
+
+
+    bool formatStickmanBool = true;
 
 
     private void Start()
@@ -20,41 +24,43 @@ public class ObstacleManager : MonoBehaviour
     }
 
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        #region karakterimize çarparsa onu öldürür
-        if (collision.collider.CompareTag("blue"))
+        if (other.CompareTag("blue"))
         {
             if (gameManager.gameState)
             {
-                #region karakter text ve liste güncellemesi
-
                 playerManager.TextUpdate();
-                #endregion
-                StartCoroutine(FormatStickman());
-
-                battleManager.KillTheBlue(collision.gameObject);
+                battleManager.KillTheBlue(other.gameObject);
                 soundManager.BattleSound();
+                poolManager.BlueParticleActivate(other.transform);
 
-                //particle metodu gelecek
-                poolManager.BlueParticleActivate(collision.transform);
-
-                if (playerManager.transform.childCount < 2) //eðer çöp adam kalmamýþsa.
+                if (playerManager.transform.childCount < 2)
                 {
                     playerManager.transform.GetChild(0).gameObject.SetActive(false);
-                    gameManager.LoseMenuActivity(); // Kaybettin Ekranýný aç
+                    gameManager.LoseMenuActivity();
                     print("Obstacle tarafýndan öldürüldün");
                 }
-            }
 
+                if (formatStickmanBool)
+                {
+                    StartCoroutine(FormatStickman());
+                    formatStickmanBool = false;
+                }
+            }
         }
-        #endregion
     }
 
     IEnumerator FormatStickman()
     {
         yield return new WaitForSeconds(1.2f);
         playerManager.FormatStickMan();
+        StartCoroutine(ResetFormatStickmanCooldown());
+    }
+
+    IEnumerator ResetFormatStickmanCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        formatStickmanBool = true;
     }
 }

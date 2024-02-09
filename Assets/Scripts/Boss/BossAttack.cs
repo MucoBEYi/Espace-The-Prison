@@ -20,7 +20,7 @@ public class BossAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("player") && gameManager.gameState)
         {
             //3 tane karakterimizi öldürür
             for (int i = 0; i < 3; i++)
@@ -29,14 +29,14 @@ public class BossAttack : MonoBehaviour
                 soundManager.BattleSound();
                 poolManager.BlueParticleActivate(other.transform);
 
-                playerManager.TextUpdate();
-                playerManager.FormatStickMan();
                 if (other.transform.childCount < 2)
                 {
                     playerManager.transform.GetChild(0).gameObject.SetActive(false);
                     gameManager.LoseMenuActivity();
                     return;
                 }
+                playerManager.TextUpdate();
+                playerManager.FormatStickMan();
             }
 
         }

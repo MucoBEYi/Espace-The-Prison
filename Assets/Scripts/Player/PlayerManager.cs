@@ -71,7 +71,6 @@ public class PlayerManager : MonoBehaviour
 
     public void FormatStickMan()
     {
-
         getClass.vCamManager.GetCameraPos();
         TextUpdate();
         Alignment();
@@ -159,7 +158,7 @@ public class PlayerManager : MonoBehaviour
         #endregion
 
         #region düþman gördüyse saldýrý moduna geçer
-        if (other.CompareTag("playerDetected"))
+        if (other.CompareTag("enemyManager"))
         {
             getClass.battleManager.attackState = true;
 
@@ -178,7 +177,7 @@ public class PlayerManager : MonoBehaviour
         {
             getClass.bossManager = other.transform.GetChild(1).GetComponent<BossManager>();
 
-            getClass.bossManager.bossBattlestate = true;
+            getClass.gameManager.bossBattlestate = true;
         }
         #endregion
     }

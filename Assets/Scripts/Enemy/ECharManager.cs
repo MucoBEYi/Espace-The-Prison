@@ -13,19 +13,24 @@ public class ECharManager : MonoBehaviour
     private void Start()
     {
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
-        enemyManager = transform.parent.GetComponent<EnemyManager>();
+        enemyManager = GetComponentInParent<EnemyManager>();
         poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
 
     }
 
-    #region düþmanlar karakterlerimizi öldürür
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        if (collision.collider.CompareTag("blue") && battleManager.attackState && collision.transform.parent.childCount > 1)
+        enemyManager.EnemyAnimation(transform);
+    }
+
+    #region düþmanlar karakterlerimizi öldürür
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("blue") && battleManager.attackState && other.transform.parent.childCount > 1)
         {
             enemyManager.TextUpdate();
 
-            // battleManager.KillTheBlue(collision.gameObject);       düzensiz eksiltme yaptýðý için bunu pCharManager scriptine taþýdým.
+            battleManager.KillTheBlue(other.gameObject);
 
             poolManager.RedParticleActivate(transform);
 

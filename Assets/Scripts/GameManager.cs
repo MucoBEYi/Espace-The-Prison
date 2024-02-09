@@ -15,10 +15,11 @@ public class GameManager : MonoBehaviour
 
 
     //true = oyun çalýþýyor
-    public bool gameState;
+    public bool gameState, bossBattlestate;
 
     //oyun durdurduðunda attack da pasif oluyor, oyunu tekrar baþlattýðýnda eðer savaþta ise tekrar aktif olmasý gerekiyor.
     public bool attackDebug;
+
 
     #region Süre deðiþkenleri   ek: kazanýnca, kalan prisoner sayýsý
     private float elapsedTime = 0f;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        currentLevelIndex = PlayerPrefs.GetInt("CurrentLevel", currentLevelIndex);
+
         currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
     }
 
@@ -70,14 +73,28 @@ public class GameManager : MonoBehaviour
     public void StartButtonClicked()
     {
         StopButton.SetActive(true);
-        StartMenu.SetActive(!StartMenu.activeSelf);
         gameState = true;
+        battleManager.attackState = attackDebug;
+        bossBattlestate = false;
+        StartMenu.SetActive(!StartMenu.activeSelf);
+
     }
 
     public void SettingsOpen()
     {
         StopMenuContents.SetActive(false);
         settings.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        currentLevelIndex = 0;
+        Time.timeScale = 1;
+        StopMenuContents.SetActive(false);
+        ResetAll();
+        Destroy(currentLevel);
+        currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
+
     }
 
     public void SettingsClose()
@@ -109,6 +126,9 @@ public class GameManager : MonoBehaviour
     }
     public void StopButtonClicked()
     {
+        //bunu kullanmaktan nefret ediyorum!
+        Time.timeScale = 0f;
+
         StopButton.SetActive(false);
         attackDebug = battleManager.attackState;
         gameState = false;
@@ -118,6 +138,7 @@ public class GameManager : MonoBehaviour
     }
     public void StopMenuButtonClicked()
     {
+        Time.timeScale = 1;
         StopMenuContents.SetActive(false);
         gameState = true;
         battleManager.attackState = attackDebug;
@@ -182,6 +203,12 @@ public class GameManager : MonoBehaviour
         player.position = new Vector3(0, 0.5f, 0);
         player.GetChild(0).gameObject.SetActive(true);
         player.GetChild(0).position = new Vector3(player.position.x, player.GetChild(0).position.y, player.position.z);
+
+        gameState = false;
+        Time.timeScale = 1;
+        minutes = 0;
+        PlayerPrefs.SetInt("CurrentLevel", currentLevelIndex);
+        PlayerPrefs.Save();
     }
 
     #endregion

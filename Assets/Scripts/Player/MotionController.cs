@@ -49,7 +49,7 @@ public class MotionController : MonoBehaviour
             return;
         }
 
-        if (!permission)
+        if (!gameManager.bossBattlestate || !permission)
         {
             Movement();
         }
@@ -94,7 +94,7 @@ public class MotionController : MonoBehaviour
                 _touchPos = Mathf.Clamp(_touchPos, -3.5f, 3.5f);
             #endregion
 
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime / 3), transform.position.y, transform.position.z + 0.5f * Time.fixedDeltaTime);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, _touchPos, Time.fixedDeltaTime / 3), transform.position.y, transform.position.z + 2f * Time.fixedDeltaTime);
 
         }
         else

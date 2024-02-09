@@ -20,7 +20,6 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
     private Transform player;
-    private bool state;
 
     private void Start()
     {
@@ -41,24 +40,14 @@ public class EnemyManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (state)
+        if (battleManager.attackState)
         {
             battleManager.EnemyOffence(player, transform);
-            //bunun updateden kaldýrýp, daha az performans harcayacak bir yere taþýnmasý gerekiyor.
-            EnemyAnimation(transform);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("player"))
-            state = true;
-    }
-
-
-
     #region kopyalanan düþman hizasý
-    private void FormatEnemyStickMan()            //göze daha hoþ görüldüðü için IEnumerator yapýldý. EÐER AKSÝLÝK ÇIKARTIRSA GERÝ VOÝD HALÝNE DÖNDÜRÜLECEK
+    private void FormatEnemyStickMan()
     {
         for (int i = 1; i < transform.childCount; i++)
         {
@@ -76,17 +65,15 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
     #region düþmanlar için animasyon 
-    private void EnemyAnimation(Transform enemy)
+    public void EnemyAnimation(Transform police)
     {
         if (gameManager.gameState && battleManager.attackState)
-            for (int i = 1; i < enemy.childCount; i++)
-                enemy.GetChild(i).GetComponent<Animator>().SetBool("runner", true);                 //getcomponentden daha iyi çözüm?
+            police.GetComponent<Animator>().SetBool("runner", true);                 //getcomponentden daha iyi çözüm?
 
 
         //oyun durursa veya savaþ biterse 
         else if (!gameManager.gameState || !battleManager.attackState)
-            for (int i = 1; i < enemy.childCount; i++)
-                enemy.GetChild(i).GetComponent<Animator>().SetBool("runner", false);
+            police.GetComponent<Animator>().SetBool("runner", false);
     }
     #endregion
 

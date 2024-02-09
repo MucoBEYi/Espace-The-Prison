@@ -19,40 +19,34 @@ public class BattleManager : MonoBehaviour
     private Vector3 enemyDistance;
 
 
+
     private void Start()
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     #region karakterler düþmanlarý takip eder ve eðer düþman kalmadýysa yapýlacak iþlemler
-    public void PlayerOffence(Transform enemyZone, Transform player)
+    public void PlayerOffence(Transform enemy, Transform player)
     {
         //savaþ yoksa diðer komutlarý çalýþtýrmaz
         if (!attackState)
             return;
 
         //savaþ baþladýysa playerler enemy içine girer
-        if (enemyZone.GetChild(0).childCount > 1)
+        if (enemy.childCount > 1)
             for (int i = 1; i < player.childCount; i++)
             {
                 #region karakterin rotasyonunu düþmanlara çevirir
-                for (int j = 1; j < enemyZone.GetChild(0).childCount; j++)
-                {
-                    enemyDistance = enemyZone.GetChild(0).GetChild(j).position - player.GetChild(i).position;
-                }
-
+                enemyDistance = enemy.GetChild(1).position - player.GetChild(i).position;
                 player.GetChild(i).rotation = Quaternion.Slerp(player.GetChild(i).rotation, Quaternion.LookRotation(enemyDistance, Vector3.up), Time.fixedDeltaTime * 10);
 
                 #endregion
 
                 #region karakterlerimiz düþmanlarý takip eder
-                enemyZone.GetChild(0).GetChild(0).gameObject.SetActive(true);
 
 
-                if (enemyDistance.magnitude < 20f)      //düþman ile arasýndaki mesafe
-                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemyZone.GetChild(0).GetChild(1).position, Time.fixedDeltaTime);
-
-
+                if (enemyDistance.magnitude < 20f && i < enemy.childCount)      //düþman ile arasýndaki mesafe
+                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(i).position, Time.fixedDeltaTime * 3);
 
                 //text 1. karakteri takip eder(bug fix)
                 player.GetChild(0).position = new Vector3(player.GetChild(0).position.x, player.GetChild(0).position.y, Mathf.Lerp(player.GetChild(0).position.z, player.GetChild(1).position.z, Time.fixedDeltaTime));
@@ -62,7 +56,7 @@ public class BattleManager : MonoBehaviour
         else
         {
             attackState = false;
-            enemyZone.gameObject.SetActive(false);
+            enemy.gameObject.SetActive(false);
             playerManager.FormatStickMan();
 
             Debug.Log("düþman bitti");
@@ -91,19 +85,20 @@ public class BattleManager : MonoBehaviour
         if (enemy.childCount > 1 && player.childCount > 1)
             for (int i = 1; i < enemy.childCount; i++)
             {
-                #region düþmanlarýn rotasyonunu karaktere çevirir                
-                for (int j = 1; j < player.childCount; j++)
-                {
-                    //düþmanlar player transformuna rotasyonunu çevirmek için gereken kod(hiç bir þey anlamadým pozisyon ile rotasyonu ayarlamak nasýl yaw)
-                    playerDistance = player.GetChild(j).position - enemy.GetChild(i).position;
-                }
+
+                #region düþmanlarýn rotasyonunu karaktere çevirir
+                playerDistance = player.GetChild(1).position - enemy.GetChild(i).position;
                 enemy.GetChild(i).rotation = Quaternion.Slerp(enemy.GetChild(i).rotation, quaternion.LookRotation(playerDistance, Vector3.up), Time.fixedDeltaTime * 10);
                 #endregion
 
 
+
                 #region karakteri takip eder
-                if (playerDistance.magnitude < 20f)     //player ile düþmanlarýn arasýndaki mesafe
-                    enemy.GetChild(i).position = Vector3.MoveTowards(enemy.GetChild(i).position, player.GetChild(1).position, Time.fixedDeltaTime * 3);
+                enemy.GetChild(0).gameObject.SetActive(true);
+
+                if (playerDistance.magnitude < 20f && i < player.childCount)     //player ile düþmanlarýn arasýndaki mesafe
+                    enemy.GetChild(i).position = Vector3.MoveTowards(enemy.GetChild(i).position, player.GetChild(i).position, Time.fixedDeltaTime * 5);
+
 
 
                 //text 1. enemyi takip eder(bug fix)
@@ -127,7 +122,6 @@ public class BattleManager : MonoBehaviour
             print("düþman kazandý");
         }
         #endregion
-
     }
 
     #endregion

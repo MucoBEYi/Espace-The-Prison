@@ -13,7 +13,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] float bossSpeed;
     private float Distance;
     public float start = 25f;
-    public bool bossBattlestate;
+
     private Transform player;
 
     public TextMeshPro bossTxt;
@@ -43,7 +43,7 @@ public class BossManager : MonoBehaviour
     void Update()
     {
 
-        if (bossBattlestate)
+        if (gameManager.bossBattlestate)
         {
             Distance = Vector3.Distance(transform.position, player.position);
 
@@ -81,8 +81,6 @@ public class BossManager : MonoBehaviour
 
             }
 
-
-            gameManager.StopButton.SetActive(false);
             if (Distance < 3f)
             {
                 animator.SetBool("hit", true);
@@ -108,7 +106,7 @@ public class BossManager : MonoBehaviour
 
         motionController.permission = false;
         StartCoroutine(gameManager.GameWin());
-        bossBattlestate = false;
+        gameManager.bossBattlestate = false;
         bossTxt.transform.parent.gameObject.SetActive(false);
     }
 }
