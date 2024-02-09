@@ -17,7 +17,6 @@ public class BossManager : MonoBehaviour
     private Transform player;
 
     public TextMeshPro bossTxt;
-
     private void Start()
     {
         motionController = GameObject.FindGameObjectWithTag("player").GetComponent<MotionController>();
@@ -59,31 +58,37 @@ public class BossManager : MonoBehaviour
         if (gameManager.gameState)
         {
             //valla bütün tuþlara bastým, çalýþýyor mu? çalýþýyor.
-            if ((player.position - transform.position).magnitude > 2)
-                transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, player.position.x, bossSpeed * Time.deltaTime), transform.position.y, Mathf.MoveTowards(transform.position.z, player.position.z, bossSpeed * Time.deltaTime));
+            if ((player.position - transform.position).magnitude > 1)
+            {
+                Debug.Log("boss if");
+                transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, player.position.x, Time.deltaTime), transform.position.y, Mathf.MoveTowards(transform.position.z, player.position.z, bossSpeed * Time.deltaTime));
+            }
             else
-                transform.position -= new Vector3(0, 0, Mathf.Lerp(0, -4, Time.deltaTime / 5));
-
+            {
+                Debug.Log("boss else");
+                transform.position -= new Vector3(0, 0, Mathf.MoveTowards(0, -99, Time.deltaTime));
+            }
             //text bu scripte baðlý objeyi takip eder(bayaðý kýsa yazdým dimi wetrqwetqwer).              
-            transform.parent.GetChild(0).position = new Vector3(Mathf.Lerp(transform.parent.GetChild(0).position.x, transform.position.x, Time.deltaTime),
+            transform.parent.GetChild(0).position = new Vector3(Mathf.Lerp(transform.parent.GetChild(0).position.x, transform.position.x, Time.deltaTime * 2),
                 transform.parent.GetChild(0).position.y, Mathf.Lerp(transform.parent.GetChild(0).position.z, transform.position.z + 1, Time.deltaTime));
 
             animator.SetBool("run", true);
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
+
+
             //özür dilerim ama artýk proje o kadar çorba oldu ki, neyi nereye yazacaðýmý bilemedim.. bir daha proje yaparsam ilk neyi nereye yazacaðýmý not alacam 
             for (int i = 1; i < player.childCount; i++)         //bu fordaki etkilerinin genel olarak amacý: prisoner karakterleri rotasyonunu bossa çevirir ve ona doðru ilerler
             {
                 player.GetChild(i).LookAt(new Vector3(transform.position.x, player.GetChild(i).position.y, transform.position.z));
-                if ((player.position - transform.position).magnitude > 1.25f)
-                    player.GetChild(i).position = new Vector3(player.GetChild(i).position.x, player.GetChild(i).position.y, Mathf.MoveTowards(player.GetChild(i).position.z, transform.position.z - 3, Time.deltaTime));
-
+                if ((player.GetChild(i).position - transform.position).magnitude > 20f)
+                    player.GetChild(i).position = new Vector3(player.GetChild(i).position.x, player.GetChild(i).position.y, Mathf.MoveTowards(player.GetChild(i).position.z, transform.position.z, Time.deltaTime));
             }
 
             if (Distance < 3f)
             {
                 animator.SetBool("hit", true);
-                motionController.permission = true;
+                gameManager.permission = true;
                 if (Distance > 2f)
                 {
                     Vector3 direction = (player.position - transform.position).normalized;
@@ -103,7 +108,7 @@ public class BossManager : MonoBehaviour
         isDeath = true;
         animator.SetBool("death", true);
 
-        motionController.permission = false;
+        gameManager.permission = false;
         StartCoroutine(gameManager.GameWin());
         gameManager.bossBattlestate = false;
         bossTxt.transform.parent.gameObject.SetActive(false);

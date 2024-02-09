@@ -46,9 +46,9 @@ public class BattleManager : MonoBehaviour
 
 
                 if (enemyDistance.magnitude < 20f && i < enemy.childCount)      //düþman ile arasýndaki mesafe
-                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(i).position, Time.fixedDeltaTime * 3);
+                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(i).position, Time.fixedDeltaTime * 1.75f);
                 else if (enemyDistance.magnitude < 20)
-                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(UnityEngine.Random.Range(1, enemy.childCount)).position, Time.fixedDeltaTime * 3);
+                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(UnityEngine.Random.Range(1, enemy.childCount)).position, Time.fixedDeltaTime * 1.5f);
 
 
                 //text 1. karakteri takip eder(bug fix)

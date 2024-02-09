@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
 
     //true = oyun çalýþýyor
-    public bool gameState, bossBattlestate;         //bossManager scriptinden buraya taþýndý.
+    public bool gameState, bossBattlestate, permission;         //bossManager scriptinden buraya taþýndý.
 
     //oyun durdurduðunda attack da pasif oluyor, oyunu tekrar baþlattýðýnda eðer savaþta ise tekrar aktif olmasý gerekiyor.
     public bool attackDebug;
@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
         player.position = new Vector3(0, 0.5f, 0);
         player.GetChild(0).gameObject.SetActive(true);
         player.GetChild(0).position = new Vector3(player.position.x, player.GetChild(0).position.y, player.position.z);
-
+        permission = false;
         gameState = false;
         Time.timeScale = 1;
         minutes = 0;

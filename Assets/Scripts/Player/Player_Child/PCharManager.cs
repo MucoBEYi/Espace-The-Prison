@@ -29,10 +29,14 @@ public class PCharManager : MonoBehaviour
             poolManager.BlueParticleActivate(transform);
         }
 
+
+    }
+    private void OnTriggerStay(Collider other)
+    {
         if (other.CompareTag("Boss") && gameManager.gameState)
         {
             bossManager = other.GetComponent<BossManager>();
-            bossManager.BossDamage(2);
+            bossManager.BossDamage(1);
             bossManager.bossTxt.text = bossManager.bossHealth.ToString();
         }
     }

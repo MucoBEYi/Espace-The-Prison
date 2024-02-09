@@ -25,8 +25,6 @@ public class MotionController : MonoBehaviour
     [SerializeField] float swipeSpeed = 2f;
     [SerializeField] float sensibility = 0.1f;
 
-    public bool permission;
-
     private void Start()
     {
 
@@ -49,7 +47,7 @@ public class MotionController : MonoBehaviour
             return;
         }
 
-        if (!gameManager.bossBattlestate || !permission)
+        if (!gameManager.bossBattlestate || !gameManager.permission)
         {
             Movement();
         }
