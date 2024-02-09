@@ -630,8 +630,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 19.712355, y: 4, z: 4}
-  m_Center: {x: 4.1943493, y: 0, z: 0}
+  m_Size: {x: 2.311548, y: 4, z: 3.2704773}
+  m_Center: {x: 0.4344871, y: 0, z: 0.27156627}
 --- !u!114 &1806004300311445704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020aaed69a5bbe348836f226902875b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 9999
+  bossHealth: 200
   isDeath: 0
   bossSpeed: 3
   start: 25
@@ -1184,8 +1184,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 19.13, y: 2.39, z: 0.2623291}
-  m_Center: {x: 1.7, y: 0, z: 0}
+  m_Size: {x: 19.13, y: 2.39, z: 2.2573886}
+  m_Center: {x: 1.6999998, y: 0, z: 0.99752975}
 --- !u!1 &5850854404996318737
 GameObject:
   m_ObjectHideFlags: 0

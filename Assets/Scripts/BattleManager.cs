@@ -47,6 +47,9 @@ public class BattleManager : MonoBehaviour
 
                 if (enemyDistance.magnitude < 20f && i < enemy.childCount)      //düþman ile arasýndaki mesafe
                     player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(i).position, Time.fixedDeltaTime * 3);
+                else if (enemyDistance.magnitude < 20)
+                    player.GetChild(i).position = Vector3.MoveTowards(player.GetChild(i).position, enemy.GetChild(UnityEngine.Random.Range(1, enemy.childCount)).position, Time.fixedDeltaTime * 3);
+
 
                 //text 1. karakteri takip eder(bug fix)
                 player.GetChild(0).position = new Vector3(player.GetChild(0).position.x, player.GetChild(0).position.y, Mathf.Lerp(player.GetChild(0).position.z, player.GetChild(1).position.z, Time.fixedDeltaTime));
@@ -98,7 +101,8 @@ public class BattleManager : MonoBehaviour
 
                 if (playerDistance.magnitude < 20f && i < player.childCount)     //player ile düþmanlarýn arasýndaki mesafe
                     enemy.GetChild(i).position = Vector3.MoveTowards(enemy.GetChild(i).position, player.GetChild(i).position, Time.fixedDeltaTime * 5);
-
+                else if (playerDistance.magnitude < 20)
+                    enemy.GetChild(i).position = Vector3.MoveTowards(enemy.GetChild(i).position, player.GetChild(UnityEngine.Random.Range(0, player.childCount)).position, Time.fixedDeltaTime * 5);
 
 
                 //text 1. enemyi takip eder(bug fix)
