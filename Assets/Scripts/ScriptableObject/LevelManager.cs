@@ -7,5 +7,7 @@ public class LevelManager : ScriptableObject
 {
     public GameObject[] levels;
 
+    public GameObject[] randomLevels;
+
 
 }

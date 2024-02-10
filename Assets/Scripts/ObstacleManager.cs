@@ -35,11 +35,10 @@ public class ObstacleManager : MonoBehaviour
                 soundManager.BattleSound();
                 poolManager.BlueParticleActivate(other.transform);
 
-                if (playerManager.transform.childCount < 2)
+                if (playerManager.transform.childCount < 2)         //obstacle tarafýndan öldürüldüðünde
                 {
                     playerManager.transform.GetChild(0).gameObject.SetActive(false);
                     gameManager.LoseMenuActivity();
-                    print("Obstacle tarafýndan öldürüldün");
                 }
 
                 if (formatStickmanBool)
@@ -55,11 +54,6 @@ public class ObstacleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         playerManager.FormatStickMan();
-        StartCoroutine(ResetFormatStickmanCooldown());
-    }
-
-    IEnumerator ResetFormatStickmanCooldown()
-    {
         yield return new WaitForSeconds(1f);
         formatStickmanBool = true;
     }

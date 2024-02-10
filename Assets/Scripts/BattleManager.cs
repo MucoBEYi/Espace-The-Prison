@@ -62,11 +62,8 @@ public class BattleManager : MonoBehaviour
             enemy.gameObject.SetActive(false);
             playerManager.FormatStickMan();
 
-            Debug.Log("düþman bitti");
-
-            if (player.childCount < 2) //önlem
+            if (player.childCount < 2) //düþman ile ayný anda bittiðinde
             {
-                Debug.Log("Düþman ile ayný anda bittin");
                 gameManager.gameState = false;
                 attackState = false;
                 player.GetChild(0).gameObject.SetActive(false);
@@ -122,7 +119,6 @@ public class BattleManager : MonoBehaviour
             player.GetChild(0).gameObject.SetActive(false);
             gameManager.LoseMenuActivity();
             #endregion
-            print("düþman kazandý");
         }
         #endregion
     }

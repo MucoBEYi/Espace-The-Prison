@@ -46,13 +46,17 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         currentLevelIndex = PlayerPrefs.GetInt("CurrentLevel", currentLevelIndex);
+        if (currentLevelIndex < 10)
+            currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
+        else
+            currentLevel = Instantiate(levelManager.levels[Random.Range(0, 10)]);
 
-        currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
     }
 
 
 
     public GameObject StartMenu, LoseMenu, WinMenu, StopMenuContents, StopButton, settings;
+    public TextMeshProUGUI levelTxt;
     private void Start()
     {
         gameState = false;
@@ -75,9 +79,11 @@ public class GameManager : MonoBehaviour
     {
         StopButton.SetActive(true);
         gameState = true;
-        battleManager.attackState = attackDebug;
+        battleManager.attackState = false;
         bossBattlestate = false;
+
         StartMenu.SetActive(!StartMenu.activeSelf);
+        levelTxt.text = "Level " + (currentLevelIndex + 1).ToString();
 
     }
 
@@ -114,8 +120,10 @@ public class GameManager : MonoBehaviour
         LoseMenu.SetActive(false);
         ResetAll();
         Destroy(currentLevel);
-        currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
-
+        if (currentLevelIndex < 10)
+            currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
+        else
+            currentLevel = Instantiate(levelManager.levels[Random.Range(0, 10)]);
     }
 
     //************************************************************************************************************* DÜZENLENECEK!
@@ -174,23 +182,17 @@ public class GameManager : MonoBehaviour
     //yeni seviyeyi oluþturur ve önceki seviyeyi destroy eder.
     void CreateNextLevel()
     {
-        if (currentLevelIndex >= levelManager.levels.Length)
-        {
-            Debug.Log("hangi iþsizlikle bütün seviyeleri bitirdiniz bilmiyorum ama tebrikler.");
-            return;
-        }
-
         Destroy(currentLevel);
 
         currentLevelIndex++;
 
         if (currentLevelIndex < levelManager.levels.Length)
-        {
             currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
-
-        }
         else
-            print("bi bok oldu ama bende bilmiyorum");
+        {
+            currentLevel = Instantiate(levelManager.randomLevels[Random.Range(0, 10)]);
+        }
+
 
     }
 
@@ -208,6 +210,7 @@ public class GameManager : MonoBehaviour
         player.GetChild(0).position = new Vector3(player.position.x, player.GetChild(0).position.y, player.position.z);
         permission = false;
         gameState = false;
+        battleManager.attackState = false;
         Time.timeScale = 1;
         minutes = 0;
         camManager.GetCameraPos();
