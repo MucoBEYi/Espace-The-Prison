@@ -21,9 +21,9 @@ OYUNUN BİTMEMİŞ OLMASI
 DÜZELDİ(UMARIM):
 
 
-karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(MÜCAHİT DÜZELTTİ, playerManager SCRİPTİNDEKİ LİSTE KODU KALDIRILDI(DAHA EKLEMEDİM GİTHUBA)).
+karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(MÜCAHİT DÜZELTTİ).
 
-Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. (MÜCAHİT DÜZELTTİ, SEBEBİ "PlayerManager" SCRİPTİNDEKİ GAMEOBJE LİSTESİNDEYDİ).
+Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. (MÜCAHİT DÜZELTTİ).
 
 karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT EKLEDİ).
 
