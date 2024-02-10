@@ -3,32 +3,22 @@ DÜZENLENME AŞAMASINDA:
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor(Level Dizayncıyı kim belirlediyseniz o başlasın şimdiden)
 yapman gereken tek şey: prefabs klasöründeki blue ve red particle objelerinin görünümünü daha güzel hale getirmek(yardım için devoloperleri etiketleyebilirsin)
 
-UI düzenleniyor(DÜZENLENİYOR, E.G).
 
-oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZENLENİYOR, E.G, A.Ş)
-
-oyun genel olarak kasıyor, optimizasyon yapılmalı: artistler poligon sayısı düşüyor, yazılımcılar performansı etkileyecek işlemleri araştırıyor(SORUNUN ANA KAYNAĞI KULLANDIĞIMIZ MODELLER)
 
 **********************************
 
 BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
-animasyonlar update metodunda sürekli aktif olup olmadığını kontrol ediyor(performans sıkıntısı çıkarır, düzeltilmeli).
-
-karakterleri ienumerator ile yapmaya çalışınca oyun çok kasıyor(voide çevrildi, çözüm bulunursa uygulanacak)
-
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
 BÜYÜK PROBLEMLİ OLAN SORUNLAR:
 
+OYUNUN BİTMEMİŞ OLMASI
 
-
-FormatStickMan metodu çok fazla güç harcıyor.
 
 **********************************
 
 DÜZELDİ(UMARIM):
-
 
 
 karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(MÜCAHİT DÜZELTTİ, playerManager SCRİPTİNDEKİ LİSTE KODU KALDIRILDI(DAHA EKLEMEDİM GİTHUBA)).
@@ -57,6 +47,12 @@ başlat butonuna basmak yerine durdur butonuna basınca çıkan seçenek ile oyu
 
 ParticleSystem pooling sistemine geçirilmeli(MÜCAHİT DÜZELTTİ).
 
+FormatStickMan metodu çok fazla güç harcıyor(CHAT GPT DÜZELTTİ)
+
 Ses eklenecek(ENES BİTİRDİ)
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor. (MÜCAHİT DÜZELTTİ)
+
+UI (A.Ş, M.K, E.G).
+
+oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZELTİLD, M.K, E.G, A.Ş)
