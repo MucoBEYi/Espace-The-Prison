@@ -21,9 +21,9 @@ OYUNUN BİTMEMİŞ OLMASI
 DÜZELDİ(UMARIM):
 
 
-karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(MÜCAHİT DÜZELTTİ, playerManager SCRİPTİNDEKİ LİSTE KODU KALDIRILDI(DAHA EKLEMEDİM GİTHUBA)).
+karakterlerimizin sayısını arttırmak için kullandığımız liste çok nadir de olsa 1 tanesini eklemiyor(MÜCAHİT DÜZELTTİ).
 
-Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. (MÜCAHİT DÜZELTTİ, SEBEBİ "PlayerManager" SCRİPTİNDEKİ GAMEOBJE LİSTESİNDEYDİ).
+Savaşlarda ve obstacle ile etkileşime girildiğinde consolede bazen hatalar çıkıyor. (MÜCAHİT DÜZELTTİ).
 
 karakter çoğaltma ve silme sistemi pool sistemine geçirilmesi(MÜCAHİT EKLEDİ).
 
@@ -49,12 +49,10 @@ ParticleSystem pooling sistemine geçirilmeli(MÜCAHİT DÜZELTTİ).
 
 FormatStickMan metodu çok fazla güç harcıyor(CHAT GPT DÜZELTTİ)
 
-kamera ayarları yapılacak(CHAT GPT DÜZELTTİ)
-
 Ses eklenecek(ENES BİTİRDİ)
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor. (MÜCAHİT DÜZELTTİ)
 
 UI (A.Ş, M.K, E.G).
 
-oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZELTİLDi, M.K, E.G, A.Ş)
+oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZELTİLD, M.K, E.G, A.Ş)
