@@ -49,10 +49,12 @@ ParticleSystem pooling sistemine geçirilmeli(MÜCAHİT DÜZELTTİ).
 
 FormatStickMan metodu çok fazla güç harcıyor(CHAT GPT DÜZELTTİ)
 
+kamera ayarları yapılacak(CHAT GPT DÜZELTTİ)
+
 Ses eklenecek(ENES BİTİRDİ)
 
 çıkarma işlemi gerçekleştiren gates(geçitler) çalışmıyor. (MÜCAHİT DÜZELTTİ)
 
 UI (A.Ş, M.K, E.G).
 
-oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZELTİLD, M.K, E.G, A.Ş)
+oyunu başlatma, finish, kazanma, kaybetme, obsctacle (DÜZELTİLDi, M.K, E.G, A.Ş)
