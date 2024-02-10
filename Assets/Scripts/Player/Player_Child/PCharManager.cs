@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PCharManager : MonoBehaviour
@@ -8,6 +9,10 @@ public class PCharManager : MonoBehaviour
     private BossManager bossManager;
     private GameManager gameManager;
 
+
+    bool waitAttack;
+
+
     private void Start()
     {
         battleManager = GameObject.FindGameObjectWithTag("battleManager").GetComponent<BattleManager>();
@@ -17,7 +22,7 @@ public class PCharManager : MonoBehaviour
 
     }
 
-    #region çarpýþtýðýnda düþman ölür
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("red") && battleManager.attackState && other.transform.parent.childCount > 1)
@@ -35,12 +40,31 @@ public class PCharManager : MonoBehaviour
     {
         if (other.CompareTag("Boss") && gameManager.gameState)
         {
+            if (waitAttack)
+                return;
             bossManager = other.GetComponent<BossManager>();
-            bossManager.BossDamage(1);
-            bossManager.bossTxt.text = bossManager.bossHealth.ToString();
+            StartCoroutine(BossAttack());
+            waitAttack = true;
         }
     }
-    #endregion
 
+
+    private IEnumerator BossAttack()
+    {
+        if (transform.parent.childCount > 5)
+        {
+            bossManager.BossDamage(0.2f);
+            bossManager.bossTxt.text = ((int)bossManager.bossHealth + 1).ToString();
+            yield return new WaitForSeconds(0.5f);
+            waitAttack = false;
+        }
+        else
+        {
+            bossManager.BossDamage(1);
+            bossManager.bossTxt.text = ((int)bossManager.bossHealth).ToString();
+            yield return new WaitForSeconds(0.75f);
+            waitAttack = false;
+        }
+    }
 }
 

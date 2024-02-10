@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private ObjectPoolManager poolManager;
 
+    private VCamManager camManager;
 
     //true = oyun çalýþýyor
     public bool gameState, bossBattlestate, permission;         //bossManager scriptinden buraya taþýndý.
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
         gameState = false;
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         poolManager = GameObject.FindGameObjectWithTag("poolManager").GetComponent<ObjectPoolManager>();
-
+        camManager = GameObject.FindGameObjectWithTag("vCam").GetComponent<VCamManager>();
         //start butonunu belirenen süre sonra çaðýrýr
         StartCoroutine(StartButtonActive());
     }
@@ -120,8 +121,8 @@ public class GameManager : MonoBehaviour
     //************************************************************************************************************* DÜZENLENECEK!
     public void WinButtonClicked()
     {
-        ResetAll();
-        CreateNextLevel();
+        CreateNextLevel();          //eðer oyunu durdurup tekrar baþlattýðýnda ayný bölümden devam etmek istiyorsan bu metodu ResetAll metodun üstüne koy   
+        ResetAll();                 //eðer oyunu durdurup tekrar baþlattýðýnda geçmiþ olduðun bölümde kalmak istiyorsan bu metodu CreateNextLevel metodun üstüne koy(geçtiðin bölümde oyunu kaybedip tekrar dene dersen g.o .d)
 
     }
     public void StopButtonClicked()
@@ -147,6 +148,7 @@ public class GameManager : MonoBehaviour
 
     public void LoseMenuActivity() // Oyuncu öldüðünde Lose menusunu açmak için
     {
+        soundManager.LoseSound();
         TimeDisplayLose.text = (minutes.ToString("00") + ":" + seconds.ToString("00"));
         StopButton.SetActive(false);
         gameState = false;
@@ -185,6 +187,7 @@ public class GameManager : MonoBehaviour
         if (currentLevelIndex < levelManager.levels.Length)
         {
             currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
+
         }
         else
             print("bi bok oldu ama bende bilmiyorum");
@@ -207,6 +210,7 @@ public class GameManager : MonoBehaviour
         gameState = false;
         Time.timeScale = 1;
         minutes = 0;
+        camManager.GetCameraPos();
         PlayerPrefs.SetInt("CurrentLevel", currentLevelIndex);
         PlayerPrefs.Save();
     }

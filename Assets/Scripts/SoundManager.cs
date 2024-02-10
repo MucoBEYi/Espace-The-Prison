@@ -55,6 +55,11 @@ public class SoundManager : MonoBehaviour
         Sound.Play();
     }
 
+    public void BossAttackSound()
+    {
+        Sound.clip = Clip[4];
+        Sound.Play();
+    }
 
     public void SetSoundVolume()
     {

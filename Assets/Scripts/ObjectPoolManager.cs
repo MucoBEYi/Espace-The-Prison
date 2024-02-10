@@ -110,6 +110,7 @@ public class ObjectPoolManager : MonoBehaviour
         //ebeveyni artýk bu scripte baðlý objenin alt objesi olur
         blueGO.transform.parent = transform.GetChild(0);
 
+        blueGO.transform.rotation = Quaternion.identity;
         //_playerGO objesini deaktif eder
         blueGO.SetActive(false);
 

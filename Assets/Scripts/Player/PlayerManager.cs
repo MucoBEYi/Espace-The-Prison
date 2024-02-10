@@ -88,11 +88,11 @@ public class PlayerManager : MonoBehaviour
             // float moveTime = i * 0.1f + 1.0f; // Örnek: her obje 0.1 saniye daha fazla sürede hareket etsin
 
 
-            if (!getClass.battleManager.attackState && !getClass.gameManager.bossBattlestate)            
+            if (!getClass.battleManager.attackState && !getClass.gameManager.bossBattlestate)
                 MoveObjectLinear(transform.GetChild(i), newPos, moveTime);
         }
-
-        transform.GetChild(0).position = new Vector3(transform.position.x, transform.GetChild(0).position.y, transform.position.z);
+        if (!getClass.gameManager.bossBattlestate)
+            transform.GetChild(0).position = new Vector3(transform.position.x, transform.GetChild(0).position.y, transform.position.z);
     }
 
     // Kullanýcý tanýmlý lineer hareket fonksiyonu
@@ -177,9 +177,8 @@ public class PlayerManager : MonoBehaviour
 
         if (other.CompareTag("BossFight"))
         {
-            getClass.bossManager = other.transform.GetChild(1).GetComponent<BossManager>();
-
             getClass.gameManager.bossBattlestate = true;
+            getClass.vCamManager.GetCameraPos();
         }
         #endregion
     }

@@ -122,7 +122,6 @@ public class BattleManager : MonoBehaviour
             player.GetChild(0).gameObject.SetActive(false);
             gameManager.LoseMenuActivity();
             #endregion
-            soundManager.LoseSound();
             print("düþman kazandý");
         }
         #endregion

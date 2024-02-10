@@ -26,7 +26,7 @@ public class BossAttack : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 battleManager.KillTheBlue(other.transform.GetChild(1).gameObject);
-                soundManager.BattleSound();
+                soundManager.BossAttackSound();
                 poolManager.BlueParticleActivate(other.transform);
 
                 if (other.transform.childCount < 2)
@@ -36,7 +36,7 @@ public class BossAttack : MonoBehaviour
                     return;
                 }
                 playerManager.TextUpdate();
-                playerManager.FormatStickMan();
+                // playerManager.FormatStickMan();
             }
 
         }
