@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
 
 
 
-    public GameObject StartMenu, LoseMenu, WinMenu, StopMenuContents, StopButton, settings;
-    public TextMeshProUGUI levelTxt;
+    public GameObject StartMenu, LoseMenu, WinMenu, StopMenuContents, StopButton, settings, contributedMenu, restartAllGameMenu;
+    public TextMeshProUGUI[] levelTxt;
     private void Start()
     {
         gameState = false;
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         bossBattlestate = false;
 
         StartMenu.SetActive(!StartMenu.activeSelf);
-        levelTxt.text = "Level " + (currentLevelIndex + 1).ToString();
+        levelTxt[0].text = "Level " + (currentLevelIndex + 1).ToString();
 
     }
 
@@ -93,20 +93,13 @@ public class GameManager : MonoBehaviour
         settings.SetActive(true);
     }
 
-    public void RestartGame()
-    {
-        currentLevelIndex = 0;
-        Time.timeScale = 1;
-        StopMenuContents.SetActive(false);
-        ResetAll();
-        Destroy(currentLevel);
-        currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
 
-    }
 
     public void SettingsClose()
     {
         settings.SetActive(false);
+        contributedMenu.SetActive(false);
+        restartAllGameMenu.SetActive(false);
         StopMenuContents.SetActive(true);
         soundManager.SaveSound(soundManager.soundVolume);
         soundManager.SaveSong(soundManager.songVolume);
@@ -157,17 +150,42 @@ public class GameManager : MonoBehaviour
     public void LoseMenuActivity() // Oyuncu öldüðünde Lose menusunu açmak için
     {
         soundManager.LoseSound();
+        levelTxt[2].text = "Level " + (currentLevelIndex + 1).ToString();
         TimeDisplayLose.text = (minutes.ToString("00") + ":" + seconds.ToString("00"));
         StopButton.SetActive(false);
         gameState = false;
         LoseMenu.SetActive(true);
     }
 
+    public void ContributedButtonClicked()
+    {
+        StopMenuContents.SetActive(false);
+        contributedMenu.SetActive(true);
+    }
+
+    public void RestartYesButtonClicked()
+    {
+        currentLevelIndex = 0;
+        Time.timeScale = 1;
+        StopMenuContents.SetActive(false);
+        restartAllGameMenu.SetActive(false);
+        ResetAll();
+        Destroy(currentLevel);
+        currentLevel = Instantiate(levelManager.levels[currentLevelIndex]);
+    }
+    public void RestartGameMenuActivity()
+    {
+        restartAllGameMenu.SetActive(true);
+        StopMenuContents.SetActive(false);
+    }
+
+
     #endregion
 
 
     public IEnumerator GameWin()
     {
+        levelTxt[1].text = "Level " + (currentLevelIndex + 1).ToString() + " Completed";
         TimeDisplayWin.text = (minutes.ToString("00") + ":" + seconds.ToString("00"));
         prisonerCountTxt.text = "Survivors: " + (player.childCount - 1).ToString();
         gameState = false;
@@ -213,6 +231,7 @@ public class GameManager : MonoBehaviour
         battleManager.attackState = false;
         Time.timeScale = 1;
         minutes = 0;
+        seconds = 0;
         camManager.GetCameraPos();
         PlayerPrefs.SetInt("CurrentLevel", currentLevelIndex);
         PlayerPrefs.Save();

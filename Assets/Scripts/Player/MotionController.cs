@@ -68,7 +68,7 @@ public class MotionController : MonoBehaviour
                 case TouchPhase.Moved: //Dokunma devam ediyorsa parmaðýn hareketine göre güncelleme yap
                     if (TouchControl)
                     {
-                        _touchPos += _touch.deltaPosition.x * swipeSpeed * sensibility * Time.deltaTime;
+                        _touchPos += _touch.deltaPosition.x * swipeSpeed * sensibility / Screen.width * 2f;
                     }
                     break;
 

@@ -28,29 +28,29 @@ public class VCamManager : MonoBehaviour
     {
         if (gameManager.bossBattlestate)
         {
-            StartCoroutine(ChangeFollowOffset(new(0, 8.87f, -7.81f)));
-            player.GetChild(0).localScale = Vector3.one / 1.31f;
+            StartCoroutine(ChangeFollowOffset(new(0, 9.40f, -4.60f)));
+            player.GetChild(0).localScale = Vector3.one;
             return;
         }
 
-        Vector3 playerOffset = new(0, 5.37f, -4.31f);
+        Vector3 playerOffset = new(0, 7f, -4.31f);
 
         if (player.childCount <= 29)
-            playerOffset = new(0, 5.37f, -4.31f);
+            playerOffset = new(0, 7f, -3.40f);
         else if (player.childCount >= 30 && player.childCount <= 60)
-            playerOffset = new(0, 5.87f, -4.81f);
+            playerOffset = new(0, 7.40f, -3.60f);
         else if (player.childCount >= 61 && player.childCount <= 90)
-            playerOffset = new(0, 6.37f, -5.31f);
+            playerOffset = new(0, 7.80f, -3.80f);
         else if (player.childCount >= 91 && player.childCount <= 120)
-            playerOffset = new(0, 6.87f, -5.81f);
+            playerOffset = new(0, 8.20f, -4f);
         else if (player.childCount >= 121 && player.childCount <= 150)
-            playerOffset = new(0, 7.37f, -6.31f);
+            playerOffset = new(0, 8.60f, -4.20f);
         else if (player.childCount >= 151 && player.childCount <= 180)
-            playerOffset = new(0, 7.87f, -6.81f);
+            playerOffset = new(0, 9f, -4.40f);
         else if (player.childCount >= 181)
-            playerOffset = new(0, 8.87f, -7.81f);
+            playerOffset = new(0, 9.40f, -4.60f);
 
-        player.GetChild(0).localScale = Vector3.one / 2;
+        player.GetChild(0).localScale = Vector3.one / 1.31f;
         StartCoroutine(ChangeFollowOffset(playerOffset));
     }
 
