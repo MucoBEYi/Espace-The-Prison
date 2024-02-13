@@ -193,7 +193,6 @@ public class GameManager : MonoBehaviour
         StopButton.SetActive(false);
         WinMenu.SetActive(true);
         soundManager.WinSound();
-        print("oyunu KAZANDIN");
     }
 
     #region yeni seviyeye geçiþ

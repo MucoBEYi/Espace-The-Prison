@@ -61,7 +61,7 @@ public class BossManager : MonoBehaviour
             if ((player.position - transform.position).magnitude > 1)
                 transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, player.position.x, Time.deltaTime), transform.position.y, Mathf.MoveTowards(transform.position.z, player.position.z, bossSpeed * Time.deltaTime));
             else        //biliyor musun? ne yaptýðýmý bende bilmiyorum :D ama iþe yarýyor güven bana.
-                transform.position -= new Vector3(0, 0, Mathf.MoveTowards(0, -99, Time.deltaTime));
+                transform.position -= new Vector3(0, 0, Mathf.MoveTowards(0, -99, Time.deltaTime / 3));
 
             //text bu scripte baðlý objeyi takip eder(bayaðý kýsa yazdým dimi wetrqwetqwer).              
             transform.parent.GetChild(0).position = new Vector3(Mathf.Lerp(transform.parent.GetChild(0).position.x, transform.position.x, Time.deltaTime * 2),

@@ -178,6 +178,7 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("BossFight"))
         {
             getClass.gameManager.bossBattlestate = true;
+            FormatStickMan();
             getClass.vCamManager.GetCameraPos();
         }
         #endregion

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VCamManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class VCamManager : MonoBehaviour
     private GameManager gameManager;
 
     //kamera pozisyon deðiþtirme süresi
-    float duration = 1f;
+    float duration = 1.5f;
 
 
 
@@ -28,12 +29,12 @@ public class VCamManager : MonoBehaviour
     {
         if (gameManager.bossBattlestate)
         {
-            StartCoroutine(ChangeFollowOffset(new(0, 9.40f, -4.60f)));
+            StartCoroutine(ChangeFollowOffset(new(0, 9.40f, -6f)));
             player.GetChild(0).localScale = Vector3.one;
             return;
         }
 
-        Vector3 playerOffset = new(0, 7f, -4.31f);
+        Vector3 playerOffset = new(0, 7f, -3.40f);
 
         if (player.childCount <= 29)
             playerOffset = new(0, 7f, -3.40f);
@@ -48,32 +49,33 @@ public class VCamManager : MonoBehaviour
         else if (player.childCount >= 151 && player.childCount <= 180)
             playerOffset = new(0, 9f, -4.40f);
         else if (player.childCount >= 181)
-            playerOffset = new(0, 9.40f, -4.60f);
+            playerOffset = new(0, 9.40f, -5f);
 
         player.GetChild(0).localScale = Vector3.one / 1.31f;
         StartCoroutine(ChangeFollowOffset(playerOffset));
     }
-
+    float elapsedTime;
+    bool offsetChange = true;
     public IEnumerator ChangeFollowOffset(Vector3 targetOffset)
     {
-        float elapsedTime = 0f;
-
         Vector3 startFollowOffset = transposer.m_FollowOffset;
+        if (offsetChange)
+            while (elapsedTime < duration)
+            {
+                offsetChange = false;
+                elapsedTime += Time.deltaTime;
 
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedTime / duration);
 
-            float t = Mathf.Clamp01(elapsedTime / duration);
+                transposer.m_FollowOffset = Vector3.Lerp(startFollowOffset, targetOffset, t);
 
-            transposer.m_FollowOffset = Vector3.Lerp(startFollowOffset, targetOffset, t);
+                yield return null;
+            }
 
+        yield return new WaitForSeconds(1.5f);
+        offsetChange = true;
+        elapsedTime = 0;
 
-            //burasý yeni eklendi(düzeltilmesi gerekiyor sanýrým).
-            startFollowOffset = transposer.m_FollowOffset;
-
-            yield return null;
-        }
     }
 
 
