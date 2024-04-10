@@ -11,10 +11,6 @@ BİLİNEN SORUNLAR(aklınıza gelenleri buraya yazınız):
 
 karakter ve düşmanın üstündeki textler iç içe giriyor(önerisi olan?)
 
-BÜYÜK PROBLEMLİ OLAN SORUNLAR:
-
-OYUNUN BİTMEMİŞ OLMASI
-
 
 **********************************
 
