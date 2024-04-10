@@ -1,3 +1,8 @@
+OYUN ARTIK GÜNCELLEME ALMAYACAKTIR.
+
+
+---
+
 DÜZENLENME AŞAMASINDA:
 
 ParticleSystem kodları yapıldı fakat inspectörden görsel ayarlamaları iyileştirilmesi gerekiyor(Level Dizayncıyı kim belirlediyseniz o başlasın şimdiden)
